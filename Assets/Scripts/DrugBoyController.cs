@@ -21,6 +21,7 @@ public class DrugBoyController : Singleton<DrugBoyController>
     void Update()
     {
         handleMovement();
+        handleJumping();
     }
 
     private void handleMovement()
@@ -47,7 +48,12 @@ public class DrugBoyController : Singleton<DrugBoyController>
             velocity.x += m_MovementSpeed * Time.deltaTime;
             m_DrugBoy.Rigidbody2D.velocity = velocity;
         }
-
+    }
+    
+    private void handleJumping()
+    {
+        var velocity = m_DrugBoy.Rigidbody2D.velocity;
+        
         if (Input.GetKey(KeyCode.UpArrow))
         {
             velocity.y += m_JumpForce * Time.deltaTime;
