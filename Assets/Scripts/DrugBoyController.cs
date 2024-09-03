@@ -8,6 +8,7 @@ public class DrugBoyController : Singleton<DrugBoyController>
     [SerializeField] private Player m_DrugBoy;
     [SerializeField] private Vector2 m_InitialPosition;
     [SerializeField] private float m_MovementSpeed;
+    [SerializeField] private float m_MaxMovementSpeed;
     [SerializeField] private float m_JumpForce;
     
     
@@ -23,36 +24,71 @@ public class DrugBoyController : Singleton<DrugBoyController>
         handleMovement();
         handleJumping();
     }
-
+    
+    private void handleMovement2()
+    {
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            m_DrugBoy.Rigidbody2D.velocity = new Vector2(-1 * m_MovementSpeed * Time.deltaTime ,m_DrugBoy.Rigidbody2D.velocity.y);
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            m_DrugBoy.Rigidbody2D.velocity = new Vector2(m_MovementSpeed * Time.deltaTime ,m_DrugBoy.Rigidbody2D.velocity.y);
+        }
+    }
+    
+    private void handleJumping2()
+    {
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            m_DrugBoy.Rigidbody2D.velocity = new Vector2(m_DrugBoy.Rigidbody2D.velocity.x, m_JumpForce);
+        }
+    }
+    
     private void handleMovement()
     {
-        var velocity = m_DrugBoy.Rigidbody2D.velocity;
+        Vector2 velocity = m_DrugBoy.Rigidbody2D.velocity;
         
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            if (velocity.x > 0)
+            if (velocity.x > 0) // Switch direction.
             {
-                velocity.x = 0;
+                velocity.x *= -1;
             }
             
             velocity.x += -1 * (m_MovementSpeed * Time.deltaTime);
+            if (velocity.x < -1 * m_MaxMovementSpeed) // Limit speed.
+            {
+                velocity.x = -1 * m_MaxMovementSpeed;
+            }
+
             m_DrugBoy.Rigidbody2D.velocity = velocity;
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            if (velocity.x < 0)
+            if (velocity.x < 0) // Switch direction.
             {
-                velocity.x = 0;
+                velocity.x *= -1;
             }
             
             velocity.x += m_MovementSpeed * Time.deltaTime;
+            if (velocity.x > m_MaxMovementSpeed) // Limit speed.
+            {
+                velocity.x = m_MaxMovementSpeed;
+            }
+
             m_DrugBoy.Rigidbody2D.velocity = velocity;
         }
+        // else
+        // {
+        //     velocity.x /= 2;
+        //     m_DrugBoy.Rigidbody2D.velocity = velocity;
+        // }
     }
     
     private void handleJumping()
     {
-        var velocity = m_DrugBoy.Rigidbody2D.velocity;
+        Vector2 velocity = m_DrugBoy.Rigidbody2D.velocity;
         
         if (Input.GetKey(KeyCode.UpArrow))
         {
