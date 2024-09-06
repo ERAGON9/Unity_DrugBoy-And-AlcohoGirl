@@ -11,18 +11,19 @@ public class DrugBoyController : Singleton<DrugBoyController>
     [SerializeField] private float m_MovementSpeed;
     [SerializeField] private float m_MaxMovementSpeed;
     [SerializeField] private float m_JumpForce;
+    
+    [Header("Ground Properties")]
     [SerializeField][Range(0f, 1f)] private float  m_GroundFriction;
-
     [SerializeField] private BoxCollider2D m_GroundCheck;
     [SerializeField] private LayerMask m_GroundLayerMask;
     [SerializeField] private bool m_Grounded;
     
-    private bool pressLeft = false;
-    private bool pressRight = false;
-    private bool pressUp = false;
+    private bool m_PressLeft = false;
+    private bool m_PressRight = false;
+    private bool m_PressUp = false;
 
-    private int left = -1;
-    private int right = 1;
+    private const int k_FaceDirectionLeft = -1;
+    private const int k_FaceDirectionRight = 1;
     
     // Start is called before the first frame update
     void Start()
@@ -34,11 +35,11 @@ public class DrugBoyController : Singleton<DrugBoyController>
     void Update()
     {
         getInput();
-        handleMovement();
     }
     
     private void FixedUpdate()
     {
+        handleMovement();
         handleJumping();
         checkIfOnGround();
         applyFriction();
@@ -51,7 +52,7 @@ public class DrugBoyController : Singleton<DrugBoyController>
     
     private void applyFriction()
     {
-        if (m_Grounded && !pressLeft && !pressRight && !pressUp)
+        if (m_Grounded && !m_PressLeft && !m_PressRight && !m_PressUp)
         {
             m_DrugBoy.Rigidbody2D.velocity *= m_GroundFriction;
         }
@@ -74,20 +75,18 @@ public class DrugBoyController : Singleton<DrugBoyController>
 
     private void getInput()
     {
-        pressLeft = Input.GetKey(KeyCode.LeftArrow);
-        pressRight = Input.GetKey(KeyCode.RightArrow);
-        pressUp = Input.GetKey(KeyCode.UpArrow);
+        m_PressLeft = Input.GetKey(KeyCode.LeftArrow);
+        m_PressRight = Input.GetKey(KeyCode.RightArrow);
+        m_PressUp = Input.GetKey(KeyCode.UpArrow);
     }
 
     private void handleMovement()
     {
-        Vector2 velocity = m_DrugBoy.Rigidbody2D.velocity;
-
-        if (pressLeft)
+        if (m_PressLeft)
         {
             moveLeft();
         }
-        else if (pressRight)
+        else if (m_PressRight)
         {
             movedRight();
         }
@@ -100,12 +99,12 @@ public class DrugBoyController : Singleton<DrugBoyController>
         if (velocity.x >= 0) // Switch direction.
         {
             velocity = switchVelocityDirection(velocity);
-            switchCharacterFaceDirection(left);
         }
 
         velocity.x -= m_MovementSpeed * Time.deltaTime;
-        velocity = keepSpeedLimit(velocity);
+        velocity.x = Mathf.Clamp(velocity.x, -m_MaxMovementSpeed, m_MaxMovementSpeed); // Limit speed.
         m_DrugBoy.Rigidbody2D.velocity = velocity;
+        updateCharacterFaceDirection(k_FaceDirectionLeft);
     }
 
     private Vector2 switchVelocityDirection(Vector2 i_Velocity)
@@ -118,25 +117,11 @@ public class DrugBoyController : Singleton<DrugBoyController>
         return i_Velocity;
     }
 
-    private void switchCharacterFaceDirection(int i_Direction)
+    private void updateCharacterFaceDirection(int i_Direction)
     {
         Vector3 scale = m_DrugBoy.transform.localScale;
         scale.x = i_Direction;
         m_DrugBoy.transform.localScale = scale;
-    }
-    
-    private Vector2 keepSpeedLimit(Vector2 i_Velocity)
-    {
-        if (i_Velocity.x < -m_MaxMovementSpeed) // Limit speed.
-        {
-            i_Velocity.x = -m_MaxMovementSpeed;
-        }
-        else if (i_Velocity.x > m_MaxMovementSpeed) // Limit speed.
-        {
-            i_Velocity.x = m_MaxMovementSpeed;
-        }
-
-        return i_Velocity;
     }
     
     private void movedRight()
@@ -146,17 +131,17 @@ public class DrugBoyController : Singleton<DrugBoyController>
         if (velocity.x <= 0) // Switch direction.
         {
             velocity = switchVelocityDirection(velocity);
-            switchCharacterFaceDirection(right);
         }
 
         velocity.x += m_MovementSpeed * Time.deltaTime;
-        velocity = keepSpeedLimit(velocity);
+        velocity.x = Mathf.Clamp(velocity.x, -m_MaxMovementSpeed, m_MaxMovementSpeed); // Limit speed.
         m_DrugBoy.Rigidbody2D.velocity = velocity;
+        updateCharacterFaceDirection(k_FaceDirectionRight);
     }
 
     private void handleJumping()
     {
-        if (pressUp && m_Grounded)
+        if (m_PressUp && m_Grounded)
         {
             jump();
         }

@@ -726,10 +726,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DrugBoy: {fileID: 110399018}
   m_InitialPosition: {x: -7.21, y: -3.94}
-  m_MovementSpeed: 15
+  m_MovementSpeed: 10
   m_MaxMovementSpeed: 5
   m_JumpForce: 6
-  m_GroundFriction: 0
+  m_GroundFriction: 0.8
   m_GroundCheck: {fileID: 862099233}
   m_GroundLayerMask:
     serializedVersion: 2
@@ -1794,13 +1794,17 @@ PrefabInstance:
     - target: {fileID: 8055513799135535254, guid: 6b289a27386aeaf459898978533600f8, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: baa86149f7640934693c5f49363d9ad5, type: 3}
+      objectReference: {fileID: 21300000, guid: c84429f7cb04c6546a4cff73c1282577, type: 3}
     - target: {fileID: 8055513799135535254, guid: 6b289a27386aeaf459898978533600f8, type: 3}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8055513799135535254, guid: 6b289a27386aeaf459898978533600f8, type: 3}
       propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055513799135535254, guid: 6b289a27386aeaf459898978533600f8, type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8757333511899148819, guid: 6b289a27386aeaf459898978533600f8, type: 3}
