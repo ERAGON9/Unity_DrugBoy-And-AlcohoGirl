@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class DrugBoyController : Singleton<DrugBoyController>
 {
+    private const int k_FaceDirectionLeft = -1;
+    private const int k_FaceDirectionRight = 1;
+    
     [Header("DrugBoy Properties")]
     [SerializeField] private Player m_DrugBoy;
     [SerializeField] private Vector2 m_InitialPosition;
@@ -18,12 +21,13 @@ public class DrugBoyController : Singleton<DrugBoyController>
     [SerializeField] private LayerMask m_GroundLayerMask;
     [SerializeField] private bool m_Grounded;
     
+    [Header("Jump Improvement")]
+    [SerializeField] private float m_JumpBufferTime = 0.1f;
+    
     private bool m_PressLeft = false;
     private bool m_PressRight = false;
     private bool m_PressUp = false;
-
-    private const int k_FaceDirectionLeft = -1;
-    private const int k_FaceDirectionRight = 1;
+    private float m_JumpBufferCounter = 0f;
     
     // Start is called before the first frame update
     void Start()
@@ -35,35 +39,22 @@ public class DrugBoyController : Singleton<DrugBoyController>
     void Update()
     {
         getInput();
+        handleJumping();
+        
     }
-    
+
     private void FixedUpdate()
     {
         handleMovement();
-        handleJumping();
         checkIfOnGround();
         applyFriction();
     }
-    
-    private void checkIfOnGround()
-    {
-        m_Grounded = Physics2D.OverlapAreaAll(m_GroundCheck.bounds.min, m_GroundCheck.bounds.max, m_GroundLayerMask).Length > 0;
-    }
-    
-    private void applyFriction()
-    {
-        if (m_Grounded && !m_PressLeft && !m_PressRight && !m_PressUp)
-        {
-            m_DrugBoy.Rigidbody2D.velocity *= m_GroundFriction;
-        }
-    }
-    
-    private void checkIfOnGround3() // alternative to checkIfOnGround
+
+    /*private void checkIfOnGround2() // alternative to checkIfOnGround
     {
         m_Grounded = m_GroundCheck.IsTouchingLayers(m_GroundLayerMask);
-    }
-
-    private void checkIfOnGround2() // alternative to checkIfOnGround
+    }*/
+    /*private void checkIfOnGround3() // alternative to checkIfOnGround
     {
         Vector2 position = m_DrugBoy.Rigidbody2D.position;
         Vector2 direction = Vector2.down;
@@ -71,13 +62,13 @@ public class DrugBoyController : Singleton<DrugBoyController>
         LayerMask layerMask = LayerMask.GetMask("Ground");
         RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, layerMask);
         m_Grounded = hit.collider != null;
-    } 
+    }*/
 
     private void getInput()
     {
         m_PressLeft = Input.GetKey(KeyCode.LeftArrow);
         m_PressRight = Input.GetKey(KeyCode.RightArrow);
-        m_PressUp = Input.GetKey(KeyCode.UpArrow);
+        m_PressUp = Input.GetKeyDown(KeyCode.UpArrow);
     }
 
     private void handleMovement()
@@ -102,7 +93,7 @@ public class DrugBoyController : Singleton<DrugBoyController>
         }
 
         velocity.x -= m_MovementSpeed * Time.deltaTime;
-        velocity.x = Mathf.Clamp(velocity.x, -m_MaxMovementSpeed, m_MaxMovementSpeed); // Limit speed.
+        velocity.x = Mathf.Clamp(velocity.x, -m_MaxMovementSpeed, m_MaxMovementSpeed); // Speed limit.
         m_DrugBoy.Rigidbody2D.velocity = velocity;
         updateCharacterFaceDirection(k_FaceDirectionLeft);
     }
@@ -134,23 +125,51 @@ public class DrugBoyController : Singleton<DrugBoyController>
         }
 
         velocity.x += m_MovementSpeed * Time.deltaTime;
-        velocity.x = Mathf.Clamp(velocity.x, -m_MaxMovementSpeed, m_MaxMovementSpeed); // Limit speed.
+        velocity.x = Mathf.Clamp(velocity.x, -m_MaxMovementSpeed, m_MaxMovementSpeed); // Speed limit.
         m_DrugBoy.Rigidbody2D.velocity = velocity;
         updateCharacterFaceDirection(k_FaceDirectionRight);
     }
 
     private void handleJumping()
     {
-        if (m_PressUp && m_Grounded)
+        if (m_Grounded && (m_PressUp || m_JumpBufferCounter > 0f))
         {
             jump();
+            m_JumpBufferCounter = 0f; // Reset jump buffer after jumping.
         }
+        
+        updateJumpBufferCounter();
     }
 
     private void jump()
     {
-        Vector2 velocity = m_DrugBoy.Rigidbody2D.velocity;
-        velocity.y = m_JumpForce;
-        m_DrugBoy.Rigidbody2D.velocity = velocity;
+        m_DrugBoy.Rigidbody2D.velocity = new Vector2(m_DrugBoy.Rigidbody2D.velocity.x, m_JumpForce); // option 1
+        
+        //m_DrugBoy.Rigidbody2D.AddForce(Vector2.up * m_JumpForce, ForceMode2D.Impulse); // option 2
+    }
+    
+    private void updateJumpBufferCounter()
+    {
+        if (m_PressUp)
+        {
+            m_JumpBufferCounter = m_JumpBufferTime;
+        }
+        else
+        {
+            m_JumpBufferCounter -= Time.deltaTime;
+        }
+    }
+        
+    private void checkIfOnGround()
+    {
+        m_Grounded = Physics2D.OverlapAreaAll(m_GroundCheck.bounds.min, m_GroundCheck.bounds.max, m_GroundLayerMask).Length > 0;
+    }
+
+    private void applyFriction()
+    {
+        if (m_Grounded && !m_PressLeft && !m_PressRight && m_DrugBoy.Rigidbody2D.velocity.y <= 0)
+        {
+            m_DrugBoy.Rigidbody2D.velocity *= m_GroundFriction;
+        }
     }
 }
