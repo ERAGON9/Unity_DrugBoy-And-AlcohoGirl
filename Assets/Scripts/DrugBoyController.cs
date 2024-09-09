@@ -38,7 +38,7 @@ public class DrugBoyController : Singleton<DrugBoyController>
     // Update is called once per frame
     void Update()
     {
-        getInput();
+        checkInput();
         handleJumping();
         
     }
@@ -50,21 +50,7 @@ public class DrugBoyController : Singleton<DrugBoyController>
         applyFriction();
     }
 
-    /*private void checkIfOnGround2() // alternative to checkIfOnGround
-    {
-        m_Grounded = m_GroundCheck.IsTouchingLayers(m_GroundLayerMask);
-    }*/
-    /*private void checkIfOnGround3() // alternative to checkIfOnGround
-    {
-        Vector2 position = m_DrugBoy.Rigidbody2D.position;
-        Vector2 direction = Vector2.down;
-        float distance = 1f;
-        LayerMask layerMask = LayerMask.GetMask("Ground");
-        RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, layerMask);
-        m_Grounded = hit.collider != null;
-    }*/
-
-    private void getInput()
+    private void checkInput()
     {
         m_PressLeft = Input.GetKey(KeyCode.LeftArrow);
         m_PressRight = Input.GetKey(KeyCode.RightArrow);
@@ -154,7 +140,7 @@ public class DrugBoyController : Singleton<DrugBoyController>
         {
             m_JumpBufferCounter = m_JumpBufferTime;
         }
-        else
+        else if (!m_PressUp && m_JumpBufferCounter > 0f)
         {
             m_JumpBufferCounter -= Time.deltaTime;
         }
@@ -162,14 +148,36 @@ public class DrugBoyController : Singleton<DrugBoyController>
         
     private void checkIfOnGround()
     {
-        m_Grounded = Physics2D.OverlapAreaAll(m_GroundCheck.bounds.min, m_GroundCheck.bounds.max, m_GroundLayerMask).Length > 0;
+        m_Grounded = Physics2D.OverlapAreaAll(m_GroundCheck.bounds.min, m_GroundCheck.bounds.max,
+                                                    m_GroundLayerMask).Length > 0;
     }
-
+    
+    /*private void checkIfOnGround2() // alternative to checkIfOnGround
+    {
+        m_Grounded = m_GroundCheck.IsTouchingLayers(m_GroundLayerMask);
+    }*/
+    /*private void checkIfOnGround3() // alternative to checkIfOnGround
+    {
+        Vector2 position = m_DrugBoy.Rigidbody2D.position;
+        Vector2 direction = Vector2.down;
+        float distance = 1f;
+        LayerMask layerMask = LayerMask.GetMask("Ground");
+        RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, layerMask);
+        m_Grounded = hit.collider != null;
+    }*/
+    
     private void applyFriction()
     {
         if (m_Grounded && !m_PressLeft && !m_PressRight && m_DrugBoy.Rigidbody2D.velocity.y <= 0)
         {
-            m_DrugBoy.Rigidbody2D.velocity *= m_GroundFriction;
+            Vector2 velocity = m_DrugBoy.Rigidbody2D.velocity;
+            velocity.x *= m_GroundFriction;
+            if (Mathf.Abs(velocity.x) < 0.01f) // Small threshold to avoid floating-point precision issues
+            {
+                velocity.x = 0;
+            }
+
+            m_DrugBoy.Rigidbody2D.velocity = velocity;
         }
     }
 }
