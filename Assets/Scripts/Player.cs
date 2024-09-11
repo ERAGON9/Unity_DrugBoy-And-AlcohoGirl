@@ -2,53 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
+    [Header("Components")]
     [SerializeField] private Rigidbody2D m_Rigidbody2D;
-    public GameObject objectToMove;
-    public float moveSpeed = 0.5f; 
-    public float moveDistance = 2f;
-    private bool isActivated = false;
-    private Vector3 initialPosition;
+    
+    [SerializeField] private GameObject m_Elevator;
+    [SerializeField] private float m_ElevatorMoveSpeed; 
+    [SerializeField] private float m_ElevatorMoveDistance;
+    
     public Rigidbody2D Rigidbody2D => m_Rigidbody2D;
-    private Vector3 m_StartPosition;
 
-
+    private bool m_IsButtonActivated = false;
+    private Vector3 m_ElevatorInitialPosition;
+    
     // Start is called before the first frame update
     void Start()
     {
-        m_StartPosition = transform.position;
-        initialPosition = objectToMove.transform.position;
+        m_ElevatorInitialPosition = m_Elevator.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isActivated && objectToMove.transform.position.y < initialPosition.y + moveDistance)
+        if (m_IsButtonActivated && m_Elevator.transform.position.y < m_ElevatorInitialPosition.y + m_ElevatorMoveDistance)
         {
-            objectToMove.transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
+            m_Elevator.transform.Translate(Vector3.up * (m_ElevatorMoveSpeed * Time.deltaTime));
         }
 
-        if (!isActivated && objectToMove.transform.position.y > initialPosition.y)
+        if (!m_IsButtonActivated && m_Elevator.transform.position.y > m_ElevatorInitialPosition.y)
         {
-            objectToMove.transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
+            m_Elevator.transform.Translate(Vector3.down * (m_ElevatorMoveSpeed * Time.deltaTime));
         }
     }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name == "Button floor 1")
+        if (other.gameObject.CompareTag("Button"))
         {
-            isActivated = true;
+            m_IsButtonActivated = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.name == "Button floor 1")
+        if (other.gameObject.CompareTag("Button"))
         {
-            isActivated = false;
+            m_IsButtonActivated = false;
         }
     }
     
@@ -62,6 +64,6 @@ public class Player : MonoBehaviour
     void PlayerFailed()
     {
         Debug.Log("Failed");
-        transform.position = m_StartPosition;
+        transform.position = DrugBoyController.Instance.InitialPosition;
     }
 }

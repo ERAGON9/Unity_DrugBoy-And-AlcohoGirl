@@ -24,6 +24,8 @@ public class DrugBoyController : Singleton<DrugBoyController>
     [Header("Jump Improvement")]
     [SerializeField] private float m_JumpBufferTime = 0.1f;
     
+    public Vector2 InitialPosition => m_InitialPosition;
+    
     private bool m_PressLeft = false;
     private bool m_PressRight = false;
     private bool m_PressUp = false;
@@ -40,7 +42,6 @@ public class DrugBoyController : Singleton<DrugBoyController>
     {
         checkInput();
         handleJumping();
-        
     }
 
     private void FixedUpdate()
@@ -129,9 +130,7 @@ public class DrugBoyController : Singleton<DrugBoyController>
 
     private void jump()
     {
-        m_DrugBoy.Rigidbody2D.velocity = new Vector2(m_DrugBoy.Rigidbody2D.velocity.x, m_JumpForce); // option 1
-        
-        //m_DrugBoy.Rigidbody2D.AddForce(Vector2.up * m_JumpForce, ForceMode2D.Impulse); // option 2
+        m_DrugBoy.Rigidbody2D.AddForce(Vector2.up * m_JumpForce, ForceMode2D.Impulse);
     }
     
     private void updateJumpBufferCounter()
@@ -151,20 +150,6 @@ public class DrugBoyController : Singleton<DrugBoyController>
         m_Grounded = Physics2D.OverlapAreaAll(m_GroundCheck.bounds.min, m_GroundCheck.bounds.max,
                                                     m_GroundLayerMask).Length > 0;
     }
-    
-    /*private void checkIfOnGround2() // alternative to checkIfOnGround
-    {
-        m_Grounded = m_GroundCheck.IsTouchingLayers(m_GroundLayerMask);
-    }*/
-    /*private void checkIfOnGround3() // alternative to checkIfOnGround
-    {
-        Vector2 position = m_DrugBoy.Rigidbody2D.position;
-        Vector2 direction = Vector2.down;
-        float distance = 1f;
-        LayerMask layerMask = LayerMask.GetMask("Ground");
-        RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, layerMask);
-        m_Grounded = hit.collider != null;
-    }*/
     
     private void applyFriction()
     {
