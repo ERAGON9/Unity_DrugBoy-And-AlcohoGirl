@@ -9,7 +9,7 @@ public abstract class Controller : MonoBehaviour
     private const int k_FaceDirectionRight = 1;
     
     [Header("Player Properties")]
-    [SerializeField] private Player m_Player;
+    [SerializeField] private Rigidbody2D m_PlayerRigidbody2D;
     [SerializeField] private Vector2 m_InitialPosition;
     [SerializeField] private float m_MovementSpeed;
     [SerializeField] private float m_MaxMovementSpeed;
@@ -39,7 +39,7 @@ public abstract class Controller : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        m_Player.Rigidbody2D.position = m_InitialPosition;
+        m_PlayerRigidbody2D.position = m_InitialPosition;
     }
 
     // Update is called once per frame
@@ -76,7 +76,7 @@ public abstract class Controller : MonoBehaviour
 
     private void jump()
     {
-        m_Player.Rigidbody2D.AddForce(Vector2.up * m_JumpForce, ForceMode2D.Impulse);
+        m_PlayerRigidbody2D.AddForce(Vector2.up * m_JumpForce, ForceMode2D.Impulse);
     }
     
     private void updateJumpBufferCounter()
@@ -105,7 +105,7 @@ public abstract class Controller : MonoBehaviour
 
     private void moveLeft()
     {
-        Vector2 velocity = m_Player.Rigidbody2D.velocity;
+        Vector2 velocity = m_PlayerRigidbody2D.velocity;
         
         if (velocity.x >= 0) // Switch direction.
         {
@@ -114,7 +114,7 @@ public abstract class Controller : MonoBehaviour
 
         velocity.x -= m_MovementSpeed * Time.deltaTime;
         velocity.x = Mathf.Clamp(velocity.x, -m_MaxMovementSpeed, m_MaxMovementSpeed); // Speed limit.
-        m_Player.Rigidbody2D.velocity = velocity;
+        m_PlayerRigidbody2D.velocity = velocity;
         updateCharacterFaceDirection(k_FaceDirectionLeft);
     }
 
@@ -130,14 +130,14 @@ public abstract class Controller : MonoBehaviour
 
     private void updateCharacterFaceDirection(int i_Direction)
     {
-        Vector3 scale = m_Player.transform.localScale;
+        Vector3 scale = m_PlayerRigidbody2D.transform.localScale;
         scale.x = i_Direction;
-        m_Player.transform.localScale = scale;
+        m_PlayerRigidbody2D.transform.localScale = scale;
     }
     
     private void movedRight()
     {
-        Vector2 velocity = m_Player.Rigidbody2D.velocity;
+        Vector2 velocity = m_PlayerRigidbody2D.velocity;
 
         if (velocity.x <= 0) // Switch direction.
         {
@@ -146,7 +146,7 @@ public abstract class Controller : MonoBehaviour
 
         velocity.x += m_MovementSpeed * Time.deltaTime;
         velocity.x = Mathf.Clamp(velocity.x, -m_MaxMovementSpeed, m_MaxMovementSpeed); // Speed limit.
-        m_Player.Rigidbody2D.velocity = velocity;
+        m_PlayerRigidbody2D.velocity = velocity;
         updateCharacterFaceDirection(k_FaceDirectionRight);
     }
         
@@ -158,16 +158,16 @@ public abstract class Controller : MonoBehaviour
     
     private void applyFriction()
     {
-        if (m_Grounded && !m_PressLeft && !m_PressRight && m_Player.Rigidbody2D.velocity.y <= 0)
+        if (m_Grounded && !m_PressLeft && !m_PressRight && m_PlayerRigidbody2D.velocity.y <= 0)
         {
-            Vector2 velocity = m_Player.Rigidbody2D.velocity;
+            Vector2 velocity = m_PlayerRigidbody2D.velocity;
             velocity.x *= m_GroundFriction;
             if (Mathf.Abs(velocity.x) < 0.01f) // Small threshold to avoid floating-point precision issues
             {
                 velocity.x = 0;
             }
 
-            m_Player.Rigidbody2D.velocity = velocity;
+            m_PlayerRigidbody2D.velocity = velocity;
         }
     }
 }

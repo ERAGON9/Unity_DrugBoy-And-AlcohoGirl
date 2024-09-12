@@ -4,9 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Pool
   - Ground
   - Button
+  - WaterPool
+  - DrugPool
+  - AlcoholPool
   layers:
   - Default
   - TransparentFX
