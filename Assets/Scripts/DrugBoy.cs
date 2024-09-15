@@ -38,15 +38,15 @@ public class DrugBoy : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D i_Collider)
     {
-        handleWeedBottleTrigger(i_Collider);
+        HandleWeedBottleTrigger(i_Collider);
     }
     
-    private void handleWeedBottleTrigger(Collider2D i_Collider)
+    private void HandleWeedBottleTrigger(Collider2D i_Collider)
     {
         if (i_Collider.gameObject.CompareTag("WeedBottle"))
         {
+            GameManager.instance.AddPoints(10);
             Destroy(i_Collider.gameObject);
-            //TODO: Increase Score.
         }
     }
 }

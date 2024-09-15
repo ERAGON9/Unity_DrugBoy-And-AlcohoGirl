@@ -20,10 +20,10 @@ public class Button : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D i_Collider)
     {
-        handlePlayerTriggerEnter(i_Collider);
+        HandlePlayerTriggerEnter(i_Collider);
     }
     
-    private void handlePlayerTriggerEnter(Collider2D i_Collider)
+    private void HandlePlayerTriggerEnter(Collider2D i_Collider)
     {
         if (i_Collider.gameObject.CompareTag("Player"))
         {
@@ -33,11 +33,11 @@ public class Button : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        handlePlayerTriggerExit(other);
+        HandlePlayerTriggerExit(other);
 
     }
 
-    private void handlePlayerTriggerExit(Collider2D other)
+    private void HandlePlayerTriggerExit(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
