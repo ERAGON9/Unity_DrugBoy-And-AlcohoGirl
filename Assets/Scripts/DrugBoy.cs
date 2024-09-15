@@ -16,10 +16,16 @@ public class DrugBoy : MonoBehaviour
         
     }
     
-    private void OnCollisionEnter2D(Collision2D col)
+    private void OnCollisionEnter2D(Collision2D i_Collioion)
     {
-        if (col.gameObject.CompareTag("WaterPool") || col.gameObject.CompareTag("AlcoholPool"))
+        handlePoolCollision(i_Collioion);
+    }
+    
+    private void handlePoolCollision(Collision2D i_Collision)
+    {
+        if (i_Collision.gameObject.CompareTag("WaterPool") || i_Collision.gameObject.CompareTag("AlcoholPool"))
         {
+            //TODO: Players failed.
             PlayerFailed();
         }
     }
@@ -28,5 +34,19 @@ public class DrugBoy : MonoBehaviour
     {
         Debug.Log("Failed");
         transform.position = DrugBoyController.Instance.InitialPosition;
+    }
+    
+    private void OnTriggerEnter2D(Collider2D i_Collider)
+    {
+        handleWeedBottleTrigger(i_Collider);
+    }
+    
+    private void handleWeedBottleTrigger(Collider2D i_Collider)
+    {
+        if (i_Collider.gameObject.CompareTag("WeedBottle"))
+        {
+            Destroy(i_Collider.gameObject);
+            //TODO: Increase Score.
+        }
     }
 }

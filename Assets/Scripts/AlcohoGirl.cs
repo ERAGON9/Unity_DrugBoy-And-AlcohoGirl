@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,10 +17,16 @@ public class AlcohoGirl : MonoBehaviour
         
     }
     
-    private void OnCollisionEnter2D(Collision2D col)
+    private void OnCollisionEnter2D(Collision2D i_Collision)
     {
-        if (col.gameObject.CompareTag("WaterPool") || col.gameObject.CompareTag("DrugPool"))
+        handlePoolCollision(i_Collision);
+    }
+
+    private void handlePoolCollision(Collision2D i_Collision)
+    {
+        if (i_Collision.gameObject.CompareTag("WaterPool") || i_Collision.gameObject.CompareTag("DrugPool"))
         {
+            //TODO: Players failed.
             PlayerFailed();
         }
     }
@@ -28,5 +35,19 @@ public class AlcohoGirl : MonoBehaviour
     {
         Debug.Log("Failed");
         transform.position = AlcohoGirlController.Instance.InitialPosition;
+    }
+    
+    private void OnTriggerEnter2D(Collider2D i_Collider)
+    {
+        handleAlcoholBottleTrigger(i_Collider);
+    }
+    
+    private void handleAlcoholBottleTrigger(Collider2D i_Collider)
+    {
+        if (i_Collider.gameObject.CompareTag("AlcoholBottle"))
+        {
+            Destroy(i_Collider.gameObject);
+            //TODO: Increase Score.
+        }
     }
 }

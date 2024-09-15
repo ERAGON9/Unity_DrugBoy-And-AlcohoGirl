@@ -18,15 +18,26 @@ public class Button : MonoBehaviour
         
     }
     
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D i_Collider)
     {
-        if (other.gameObject.CompareTag("Player"))
+        handlePlayerTriggerEnter(i_Collider);
+    }
+    
+    private void handlePlayerTriggerEnter(Collider2D i_Collider)
+    {
+        if (i_Collider.gameObject.CompareTag("Player"))
         {
             m_ConnectedElevator.IsActivated = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
+    {
+        handlePlayerTriggerExit(other);
+
+    }
+
+    private void handlePlayerTriggerExit(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
