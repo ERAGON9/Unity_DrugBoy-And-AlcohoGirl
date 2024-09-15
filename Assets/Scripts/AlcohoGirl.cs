@@ -40,8 +40,14 @@ public class AlcohoGirl : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D i_Collider)
     {
         HandleAlcoholBottleTrigger(i_Collider);
+        HandleDoorEnter(i_Collider);
     }
-    
+
+    private void OnTriggerExit(Collider other)
+    {
+        HandleDoorExit(other);
+    }
+
     private void HandleAlcoholBottleTrigger(Collider2D i_Collider)
     {
         if (i_Collider.gameObject.CompareTag("AlcoholBottle"))
@@ -49,5 +55,22 @@ public class AlcohoGirl : MonoBehaviour
             GameManager.Instance.AddPoints(10);
             Destroy(i_Collider.gameObject);
         }
+    }
+    
+    private void HandleDoorEnter(Collider2D i_Collider)
+    {
+        if (i_Collider.gameObject.name == "AlcohoGirl door")
+        {
+            GameManager.Instance.alcohoGirlInFinish = true;
+            GameManager.Instance.CheckWin();
+        } 
+    }
+    
+    private void HandleDoorExit(Collider i_Collider)
+    {
+        if (i_Collider.gameObject.name == "AlcohoGirl door")
+        {
+            GameManager.Instance.alcohoGirlInFinish = false;
+        } 
     }
 }

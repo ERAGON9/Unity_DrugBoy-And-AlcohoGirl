@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,8 +40,14 @@ public class DrugBoy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D i_Collider)
     {
         HandleWeedBottleTrigger(i_Collider);
+        HandleDoorEnter(i_Collider);
     }
-    
+
+    private void OnTriggerExit(Collider other)
+    {
+        HandleDoorExit(other);
+    }
+
     private void HandleWeedBottleTrigger(Collider2D i_Collider)
     {
         if (i_Collider.gameObject.CompareTag("WeedBottle"))
@@ -48,5 +55,22 @@ public class DrugBoy : MonoBehaviour
             GameManager.Instance.AddPoints(10);
             Destroy(i_Collider.gameObject);
         }
+    }
+
+    private void HandleDoorEnter(Collider2D i_Collider)
+    {
+        if (i_Collider.gameObject.name == "DrugBoy door")
+        {
+            GameManager.Instance.drugBoyInFinish = true;
+            GameManager.Instance.CheckWin();
+        } 
+    }
+    
+    private void HandleDoorExit(Collider i_Collider)
+    {
+        if (i_Collider.gameObject.name == "DrugBoy door")
+        {
+            GameManager.Instance.drugBoyInFinish = false;
+        } 
     }
 }
