@@ -46,7 +46,7 @@ public class AlcohoGirl : MonoBehaviour
     {
         if (i_Collider.gameObject.CompareTag("AlcoholBottle"))
         {
-            GameManager.instance.AddPoints(10);
+            GameManager.Instance.AddPoints(10);
             Destroy(i_Collider.gameObject);
         }
     }

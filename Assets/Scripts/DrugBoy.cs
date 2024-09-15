@@ -45,7 +45,7 @@ public class DrugBoy : MonoBehaviour
     {
         if (i_Collider.gameObject.CompareTag("WeedBottle"))
         {
-            GameManager.instance.AddPoints(10);
+            GameManager.Instance.AddPoints(10);
             Destroy(i_Collider.gameObject);
         }
     }
