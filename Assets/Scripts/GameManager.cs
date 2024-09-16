@@ -21,10 +21,9 @@ public class GameManager : Singleton<GameManager>
     // Update the score text on the UI
     private void UpdateScoreUI()
     {
-        // scoreText.text = "Score: " + score.ToString();
+        // scoreText.text = score.ToString();
     }
-
-
+    
     public void CheckWin()
     {
         if (alcohoGirlInFinish && drugBoyInFinish)

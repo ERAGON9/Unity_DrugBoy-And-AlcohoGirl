@@ -43,9 +43,9 @@ public class AlcohoGirl : MonoBehaviour
         HandleDoorEnter(i_Collider);
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider i_Collider)
     {
-        HandleDoorExit(other);
+        HandleDoorExit(i_Collider);
     }
 
     private void HandleAlcoholBottleTrigger(Collider2D i_Collider)
