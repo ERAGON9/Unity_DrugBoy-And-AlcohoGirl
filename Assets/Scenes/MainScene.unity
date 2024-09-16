@@ -1792,6 +1792,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 767738104}
+  - component: {fileID: 767738106}
   - component: {fileID: 767738102}
   - component: {fileID: 767738105}
   - component: {fileID: 767738101}
@@ -1907,13 +1908,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 767738100}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.42261827, w: 0.9063079}
   m_LocalPosition: {x: -6.43, y: 0, z: 0}
-  m_LocalScale: {x: 3.1, y: 0.3, z: 1}
+  m_LocalScale: {x: 3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1104468799}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 50}
 --- !u!50 &767738105
 Rigidbody2D:
   serializedVersion: 4
@@ -1940,7 +1941,21 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
+--- !u!114 &767738106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767738100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e820c2b9c541e41b451693a02fba6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Rigidbody2D: {fileID: 767738105}
+  m_RotateSpeed: 15
 --- !u!1 &806121443
 GameObject:
   m_ObjectHideFlags: 0
@@ -3662,7 +3677,7 @@ GameObject:
   - component: {fileID: 1725576545}
   m_Layer: 0
   m_Name: Button Elevator floor 1
-  m_TagString: Button
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4217,11 +4232,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2114506094}
+  - component: {fileID: 2114506097}
   - component: {fileID: 2114506096}
   - component: {fileID: 2114506095}
   m_Layer: 0
   m_Name: Button Bridge
-  m_TagString: Button
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4235,8 +4251,8 @@ Transform:
   m_GameObject: {fileID: 2114506093}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.65, y: -4, z: 1}
-  m_LocalScale: {x: 0.6, y: 0.45, z: 1}
+  m_LocalPosition: {x: 7.55, y: -4, z: 1}
+  m_LocalScale: {x: 0.45, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1104468799}
@@ -4338,6 +4354,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2114506097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114506093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d17f4a6cdeeb2aa4d92b059396d9eb3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ConnectedBridge: {fileID: 767738106}
 --- !u!1 &2129818381
 GameObject:
   m_ObjectHideFlags: 0
@@ -4352,7 +4381,7 @@ GameObject:
   - component: {fileID: 2129818383}
   m_Layer: 0
   m_Name: Button Elevator floor 2
-  m_TagString: Button
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

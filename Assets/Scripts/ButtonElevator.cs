@@ -6,17 +6,6 @@ public class ButtonElevator : MonoBehaviour
 {
     [SerializeField] private Elevator m_ConnectedElevator;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     
     private void OnTriggerEnter2D(Collider2D i_Collider)
     {
@@ -34,7 +23,6 @@ public class ButtonElevator : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         HandlePlayerTriggerExit(other);
-
     }
 
     private void HandlePlayerTriggerExit(Collider2D other)

@@ -36,13 +36,12 @@ public abstract class Controller : MonoBehaviour
     private bool m_PressJump = false;
     private float m_JumpBufferCounter = 0f;
     
-    // Start is called before the first frame update
+
     protected virtual void Start()
     {
         m_PlayerRigidbody2D.position = m_InitialPosition;
     }
-
-    // Update is called once per frame
+    
     protected virtual void Update()
     {
         checkInput();
@@ -112,7 +111,7 @@ public abstract class Controller : MonoBehaviour
             velocity = switchVelocityDirection(velocity);
         }
 
-        velocity.x -= m_MovementSpeed * Time.deltaTime;
+        velocity.x -= m_MovementSpeed * Time.fixedDeltaTime;
         velocity.x = Mathf.Clamp(velocity.x, -m_MaxMovementSpeed, m_MaxMovementSpeed); // Speed limit.
         m_PlayerRigidbody2D.velocity = velocity;
         updateCharacterFaceDirection(k_FaceDirectionLeft);
@@ -144,7 +143,7 @@ public abstract class Controller : MonoBehaviour
             velocity = switchVelocityDirection(velocity);
         }
 
-        velocity.x += m_MovementSpeed * Time.deltaTime;
+        velocity.x += m_MovementSpeed * Time.fixedDeltaTime;
         velocity.x = Mathf.Clamp(velocity.x, -m_MaxMovementSpeed, m_MaxMovementSpeed); // Speed limit.
         m_PlayerRigidbody2D.velocity = velocity;
         updateCharacterFaceDirection(k_FaceDirectionRight);

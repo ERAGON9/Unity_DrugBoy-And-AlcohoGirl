@@ -7,23 +7,17 @@ public class Elevator : MonoBehaviour
 {
     [Header("Elevator Settings")] 
     [SerializeField] private Rigidbody2D m_Rigidbody2D;
-    [SerializeField] private float m_MovementSpeed = 2f; 
-    [SerializeField] private float m_MovementDistance = 4f;
+    [SerializeField] private float m_MovementSpeed; 
+    [SerializeField] private float m_MovementDistance;
     
     public bool IsActivated { get; set; } = false;
     
     private Vector3 m_InitialPosition;
     
-    // Start is called before the first frame update
+    
     void Start()
     {
         m_InitialPosition = transform.position;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void FixedUpdate()
@@ -36,7 +30,8 @@ public class Elevator : MonoBehaviour
     {
         if (IsActivated && transform.position.y < m_InitialPosition.y + m_MovementDistance)
         {
-            m_Rigidbody2D.MovePosition(transform.position + Vector3.up * (m_MovementSpeed * Time.deltaTime));
+            Vector2 newPosition = new Vector2(transform.position.x, transform.position.y + (m_MovementSpeed * Time.fixedDeltaTime));
+            m_Rigidbody2D.MovePosition(newPosition);
         }
     }
     
@@ -44,7 +39,8 @@ public class Elevator : MonoBehaviour
     {
         if (!IsActivated && transform.position.y > m_InitialPosition.y)
         {
-            m_Rigidbody2D.MovePosition(transform.position + Vector3.down * (m_MovementSpeed * Time.deltaTime));
+            Vector2 newPosition = new Vector2(transform.position.x, transform.position.y - (m_MovementSpeed * Time.fixedDeltaTime));
+            m_Rigidbody2D.MovePosition(newPosition);
         }
     }
 }
