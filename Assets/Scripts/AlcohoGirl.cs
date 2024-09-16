@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AlcohoGirl : MonoBehaviour
@@ -43,15 +44,17 @@ public class AlcohoGirl : MonoBehaviour
         HandleDoorEnter(i_Collider);
     }
 
-    private void OnTriggerExit(Collider i_Collider)
+    
+    private void OnTriggerExit2D(Collider2D i_Collider)
     {
         HandleDoorExit(i_Collider);
     }
 
     private void HandleAlcoholBottleTrigger(Collider2D i_Collider)
     {
-        if (i_Collider.gameObject.CompareTag("AlcoholBottle"))
+        if (i_Collider.gameObject.CompareTag("AlcoholBottle") && !i_Collider.gameObject.GetComponent<Loot>().IsCollected)
         {
+            i_Collider.gameObject.GetComponent<Loot>().IsCollected = true;
             GameManager.Instance.AddPoints(10);
             Destroy(i_Collider.gameObject);
         }
@@ -66,7 +69,7 @@ public class AlcohoGirl : MonoBehaviour
         } 
     }
     
-    private void HandleDoorExit(Collider i_Collider)
+    private void HandleDoorExit(Collider2D i_Collider)
     {
         if (i_Collider.gameObject.name == "AlcohoGirl door")
         {

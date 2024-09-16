@@ -43,15 +43,16 @@ public class DrugBoy : MonoBehaviour
         HandleDoorEnter(i_Collider);
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D i_Collider)
     {
-        HandleDoorExit(other);
+        HandleDoorExit(i_Collider);
     }
 
     private void HandleWeedBottleTrigger(Collider2D i_Collider)
     {
-        if (i_Collider.gameObject.CompareTag("WeedBottle"))
+        if (i_Collider.gameObject.CompareTag("WeedBottle") && !i_Collider.gameObject.GetComponent<Loot>().IsCollected)
         {
+            i_Collider.gameObject.GetComponent<Loot>().IsCollected = true;
             GameManager.Instance.AddPoints(10);
             Destroy(i_Collider.gameObject);
         }
@@ -66,7 +67,7 @@ public class DrugBoy : MonoBehaviour
         } 
     }
     
-    private void HandleDoorExit(Collider i_Collider)
+    private void HandleDoorExit(Collider2D i_Collider)
     {
         if (i_Collider.gameObject.name == "DrugBoy door")
         {
