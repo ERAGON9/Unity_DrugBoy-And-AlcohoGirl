@@ -6,18 +6,6 @@ using UnityEngine;
 
 public class AlcohoGirl : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     private void OnCollisionEnter2D(Collision2D i_Collision)
     {
         HandlePoolCollision(i_Collision);
@@ -27,14 +15,12 @@ public class AlcohoGirl : MonoBehaviour
     {
         if (i_Collision.gameObject.CompareTag("WaterPool") || i_Collision.gameObject.CompareTag("DrugPool"))
         {
-            //TODO: Players failed.
-            PlayerFailed();
+            MoveToInitialPosition();
         }
     }
     
-    private void PlayerFailed()
+    private void MoveToInitialPosition()
     {
-        Debug.Log("Failed");
         transform.position = AlcohoGirlController.Instance.InitialPosition;
     }
     
@@ -62,7 +48,7 @@ public class AlcohoGirl : MonoBehaviour
     
     private void HandleDoorEnter(Collider2D i_Collider)
     {
-        if (i_Collider.gameObject.name == "AlcohoGirl door")
+        if (i_Collider.gameObject.CompareTag("AlcohoGirlDoor"))
         {
             GameManager.Instance.alcohoGirlInFinish = true;
             GameManager.Instance.CheckWin();
@@ -71,7 +57,7 @@ public class AlcohoGirl : MonoBehaviour
     
     private void HandleDoorExit(Collider2D i_Collider)
     {
-        if (i_Collider.gameObject.name == "AlcohoGirl door")
+        if (i_Collider.gameObject.CompareTag("AlcohoGirlDoor"))
         {
             GameManager.Instance.alcohoGirlInFinish = false;
         } 

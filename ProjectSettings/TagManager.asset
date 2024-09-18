@@ -11,6 +11,8 @@ TagManager:
   - AlcoholPool
   - AlcoholBottle
   - WeedBottle
+  - AlcohoGirlDoor
+  - DrugBoyDoor
   layers:
   - Default
   - TransparentFX

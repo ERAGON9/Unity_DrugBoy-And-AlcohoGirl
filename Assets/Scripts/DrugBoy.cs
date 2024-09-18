@@ -5,18 +5,6 @@ using UnityEngine;
 
 public class DrugBoy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     private void OnCollisionEnter2D(Collision2D i_Collioion)
     {
         handlePoolCollision(i_Collioion);
@@ -26,14 +14,12 @@ public class DrugBoy : MonoBehaviour
     {
         if (i_Collision.gameObject.CompareTag("WaterPool") || i_Collision.gameObject.CompareTag("AlcoholPool"))
         {
-            //TODO: Players failed.
-            PlayerFailed();
+            MoveToInitialPosition();
         }
     }
     
-    private void PlayerFailed()
+    private void MoveToInitialPosition()
     {
-        Debug.Log("Failed");
         transform.position = DrugBoyController.Instance.InitialPosition;
     }
     
@@ -60,7 +46,7 @@ public class DrugBoy : MonoBehaviour
 
     private void HandleDoorEnter(Collider2D i_Collider)
     {
-        if (i_Collider.gameObject.name == "DrugBoy door")
+        if (i_Collider.gameObject.CompareTag("DrugBoyDoor"))
         {
             GameManager.Instance.drugBoyInFinish = true;
             GameManager.Instance.CheckWin();
@@ -69,7 +55,7 @@ public class DrugBoy : MonoBehaviour
     
     private void HandleDoorExit(Collider2D i_Collider)
     {
-        if (i_Collider.gameObject.name == "DrugBoy door")
+        if (i_Collider.gameObject.CompareTag("DrugBoyDoor"))
         {
             GameManager.Instance.drugBoyInFinish = false;
         } 
