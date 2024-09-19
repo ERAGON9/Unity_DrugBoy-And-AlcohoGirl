@@ -50,7 +50,7 @@ public class AlcohoGirl : MonoBehaviour
     {
         if (i_Collider.gameObject.CompareTag("AlcohoGirlDoor"))
         {
-            GameManager.Instance.alcohoGirlInFinish = true;
+            GameManager.Instance.AlcohoGirlInFinish = true;
             GameManager.Instance.CheckWin();
         } 
     }
@@ -59,7 +59,7 @@ public class AlcohoGirl : MonoBehaviour
     {
         if (i_Collider.gameObject.CompareTag("AlcohoGirlDoor"))
         {
-            GameManager.Instance.alcohoGirlInFinish = false;
+            GameManager.Instance.AlcohoGirlInFinish = false;
         } 
     }
 }

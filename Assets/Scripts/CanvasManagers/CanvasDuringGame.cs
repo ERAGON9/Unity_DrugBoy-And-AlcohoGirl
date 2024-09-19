@@ -47,4 +47,9 @@ public class CanvasDuringGame : Singleton<CanvasDuringGame>
     {
         m_LootInfoMsgText.gameObject.SetActive(true);
     }
+    
+    public void SetInActiveLootInfoMsg()
+    {
+        m_LootInfoMsgText.gameObject.SetActive(false);
+    }
 }

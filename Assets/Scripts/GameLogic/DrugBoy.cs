@@ -48,7 +48,7 @@ public class DrugBoy : MonoBehaviour
     {
         if (i_Collider.gameObject.CompareTag("DrugBoyDoor"))
         {
-            GameManager.Instance.drugBoyInFinish = true;
+            GameManager.Instance.DrugBoyInFinish = true;
             GameManager.Instance.CheckWin();
         } 
     }
@@ -57,7 +57,7 @@ public class DrugBoy : MonoBehaviour
     {
         if (i_Collider.gameObject.CompareTag("DrugBoyDoor"))
         {
-            GameManager.Instance.drugBoyInFinish = false;
+            GameManager.Instance.DrugBoyInFinish = false;
         } 
     }
 }

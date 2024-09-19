@@ -1,28 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
     private int m_CurrentScore = 0;
-    public bool drugBoyInFinish = false;
-    public bool alcohoGirlInFinish = false;
+    public bool DrugBoyInFinish = false;
+    public bool AlcohoGirlInFinish = false;
     
     public int MaxLevelScore { get; set; }
     
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void AddPoints(int i_Points)
     {
@@ -50,10 +39,11 @@ public class GameManager : Singleton<GameManager>
     
     public void CheckWin()
     {
-        if (alcohoGirlInFinish && drugBoyInFinish)
+        if (AlcohoGirlInFinish && DrugBoyInFinish)
         {
             if (isCurrentScoreEqualMaxScore())
             {
+                CanvasDuringGame.Instance.SetInActiveLootInfoMsg();
                 handleWin();
             }
             else
