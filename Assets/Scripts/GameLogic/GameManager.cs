@@ -57,7 +57,7 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("You win!");
         CanvasDuringGame.Instance.RunTimer = false;
-        
+        //TODO: Handle win
         
     }
 }
