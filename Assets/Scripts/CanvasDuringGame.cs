@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,7 +10,28 @@ public class CanvasDuringGame : Singleton<CanvasDuringGame>
     
     [SerializeField] private TextMeshProUGUI m_CurrentScoreText;
     [SerializeField] private TextMeshProUGUI m_CurrentTimeText;
+    [SerializeField] private TextMeshProUGUI m_LootInfoMsgText;
+    public TextMeshProUGUI CurrentTimeText => m_CurrentTimeText;
+    public bool RunTimer { get; set; } = true;
     
+    private float m_ElapsedTime;
+    
+    
+    private void Update()
+    {
+        if (RunTimer)
+        {
+            UpdateCurrentTime();
+        }
+    }
+    
+    private void UpdateCurrentTime()
+    {
+        m_ElapsedTime += Time.deltaTime;
+        int minutes = Mathf.FloorToInt(m_ElapsedTime / 60);
+        int seconds = Mathf.FloorToInt(m_ElapsedTime % 60);
+        m_CurrentTimeText.text = $"{minutes:00}:{seconds:00}";
+    }
     
     public void UpdateCurrentScore(int i_CurrentScore)
     {
@@ -21,8 +43,8 @@ public class CanvasDuringGame : Singleton<CanvasDuringGame>
         m_CurrentScoreText.text = k_MaxScorePreview;
     }
     
-    public void UpdateCurrentTime(int i_CurrentTime)
+    public void SetActiveLootInfoMsg()
     {
-        m_CurrentTimeText.text = i_CurrentTime.ToString();
+        m_LootInfoMsgText.gameObject.SetActive(true);
     }
 }

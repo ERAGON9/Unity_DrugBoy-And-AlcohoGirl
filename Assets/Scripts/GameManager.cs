@@ -11,6 +11,18 @@ public class GameManager : Singleton<GameManager>
     
     public int MaxLevelScore { get; set; }
     
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+    
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 
     public void AddPoints(int i_Points)
     {
@@ -31,21 +43,31 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    public void CheckWin()
-    {
-        if (alcohoGirlInFinish && drugBoyInFinish && isCurrentScoreEqualMaxScore())
-        {
-            handleWin();
-        }
-    }
-    
     private bool isCurrentScoreEqualMaxScore()
     {
         return m_CurrentScore == MaxLevelScore;
     }
     
+    public void CheckWin()
+    {
+        if (alcohoGirlInFinish && drugBoyInFinish)
+        {
+            if (isCurrentScoreEqualMaxScore())
+            {
+                handleWin();
+            }
+            else
+            {
+                CanvasDuringGame.Instance.SetActiveLootInfoMsg();
+            }
+        }
+    }
+    
     private void handleWin()
     {
         Debug.Log("You win!");
+        CanvasDuringGame.Instance.RunTimer = false;
+        
+        
     }
 }
