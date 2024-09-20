@@ -21,8 +21,7 @@ public abstract class ControllerSingleton<T> : Controller where T: MonoBehaviour
                 var singletonObject = new GameObject(typeof(T).Name);
                 _instance = singletonObject.AddComponent<T>();
             }
-                
-            // DontDestroyOnLoad(_instance.gameObject);
+            
             return _instance;
         }
     }

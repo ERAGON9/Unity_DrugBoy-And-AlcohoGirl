@@ -6,10 +6,12 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
-    private int m_CurrentScore = 0;
+    [SerializeField] private GameObject m_CanvasLevelFinishedObject;
     public bool DrugBoyInFinish = false;
     public bool AlcohoGirlInFinish = false;
     
+    private int m_CurrentScore = 0;
+    private bool m_IsAlreadyWon = false;
     public int MaxLevelScore { get; set; }
     
 
@@ -39,10 +41,11 @@ public class GameManager : Singleton<GameManager>
     
     public void CheckWin()
     {
-        if (AlcohoGirlInFinish && DrugBoyInFinish)
+        if (AlcohoGirlInFinish && DrugBoyInFinish && !m_IsAlreadyWon)
         {
             if (isCurrentScoreEqualMaxScore())
             {
+                m_IsAlreadyWon = true;
                 CanvasDuringGame.Instance.SetInActiveLootInfoMsg();
                 handleWin();
             }
@@ -55,9 +58,18 @@ public class GameManager : Singleton<GameManager>
     
     private void handleWin()
     {
-        Debug.Log("You win!");
-        CanvasDuringGame.Instance.RunTimer = false;
-        //TODO: Handle win
+        Debug.Log("You win!"); // Added for debugging purposes
         
+        CanvasDuringGame.Instance.RunTimer = false;
+        //TODO: Stop players movement
+        activateCanvasLevelFinished();
+        string currentTime = CanvasDuringGame.Instance.CurrentTimeText.text;
+        CanvasLevelFinished.Instance.UpdateHighScore(currentTime);
+    }
+    
+    private void activateCanvasLevelFinished()
+    {
+        m_CanvasLevelFinishedObject.SetActive(true);
+        CanvasLevelFinished.Instance.Initialize();
     }
 }
