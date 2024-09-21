@@ -100,6 +100,9 @@ public abstract class Controller : MonoBehaviour
     
     private void handleMovement()
     {
+        // Move left and right are very similar
+        // We can convert it to a function that gets the pressed key and then
+        // Just do conditions for the small differences
         if (m_PressLeft)
         {
             moveLeft();

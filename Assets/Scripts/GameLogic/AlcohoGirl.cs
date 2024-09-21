@@ -16,6 +16,8 @@ public class AlcohoGirl : MonoBehaviour
 
     private void HandlePoolCollision(Collision2D i_OtherCollision)
     {
+        // We can do it a bit more fancy and add some logic of collisioning to the game manager
+        // And then use it with the instance
         if (i_OtherCollision.gameObject.CompareTag("WaterPool") || i_OtherCollision.gameObject.CompareTag("DrugPool"))
         {
             MoveToInitialPosition();
@@ -36,6 +38,7 @@ public class AlcohoGirl : MonoBehaviour
 
     private void HandleAlcoholBottleTrigger(Collider2D i_OtherCollider)
     {
+        // Same here, we can move some of the logic to the game manager
         if (i_OtherCollider.gameObject.CompareTag("AlcoholBottle") && !i_OtherCollider.gameObject.GetComponent<Loot>().IsCollected)
         {
             i_OtherCollider.gameObject.GetComponent<Loot>().IsCollected = true;
