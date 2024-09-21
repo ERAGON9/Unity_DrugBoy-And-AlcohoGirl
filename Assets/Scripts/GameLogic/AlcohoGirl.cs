@@ -6,14 +6,17 @@ using UnityEngine;
 
 public class AlcohoGirl : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D i_Collision)
+    public bool IsFinished { get; private set; } = false;
+    
+    
+    private void OnCollisionEnter2D(Collision2D i_OtherCollision)
     {
-        HandlePoolCollision(i_Collision);
+        HandlePoolCollision(i_OtherCollision);
     }
 
-    private void HandlePoolCollision(Collision2D i_Collision)
+    private void HandlePoolCollision(Collision2D i_OtherCollision)
     {
-        if (i_Collision.gameObject.CompareTag("WaterPool") || i_Collision.gameObject.CompareTag("DrugPool"))
+        if (i_OtherCollision.gameObject.CompareTag("WaterPool") || i_OtherCollision.gameObject.CompareTag("DrugPool"))
         {
             MoveToInitialPosition();
         }
@@ -24,46 +27,45 @@ public class AlcohoGirl : MonoBehaviour
         transform.position = AlcohoGirlController.Instance.InitialPosition;
     }
     
-    private void OnTriggerEnter2D(Collider2D i_Collider)
+    private void OnTriggerEnter2D(Collider2D i_OtherCollider)
     {
-        Debug.Log($"AlcohoGirl - OnTriggerEnter2D(). {i_Collider.gameObject.name}"); // Added for debugging purposes
-        HandleAlcoholBottleTrigger(i_Collider);
-        HandleDoorEnter(i_Collider);
+        Debug.Log($"AlcohoGirl - OnTriggerEnter2D(). {i_OtherCollider.gameObject.name}"); // Added for debugging purposes
+        HandleAlcoholBottleTrigger(i_OtherCollider);
+        HandleDoorEnter(i_OtherCollider);
     }
 
-    
-    private void OnTriggerExit2D(Collider2D i_Collider)
+    private void HandleAlcoholBottleTrigger(Collider2D i_OtherCollider)
     {
-        Debug.Log($"AlcohoGirl - OnTriggerExit2D() - {i_Collider.gameObject.name}"); // Added for debugging purposes
-        HandleDoorExit(i_Collider);
-    }
-
-    private void HandleAlcoholBottleTrigger(Collider2D i_Collider)
-    {
-        if (i_Collider.gameObject.CompareTag("AlcoholBottle") && !i_Collider.gameObject.GetComponent<Loot>().IsCollected)
+        if (i_OtherCollider.gameObject.CompareTag("AlcoholBottle") && !i_OtherCollider.gameObject.GetComponent<Loot>().IsCollected)
         {
-            i_Collider.gameObject.GetComponent<Loot>().IsCollected = true;
+            i_OtherCollider.gameObject.GetComponent<Loot>().IsCollected = true;
             GameManager.Instance.AddPoints(10);
-            Destroy(i_Collider.gameObject);
+            Destroy(i_OtherCollider.gameObject);
         }
     }
     
-    private void HandleDoorEnter(Collider2D i_Collider)
+    private void HandleDoorEnter(Collider2D i_OtherCollider)
     {
-        if (i_Collider.gameObject.CompareTag("AlcohoGirlDoor"))
+        if (i_OtherCollider.gameObject.CompareTag("AlcohoGirlDoor"))
         {
-            Debug.Log("AlcohoGirl - HandleDoorEnter()."); // Added for debugging purposes
-            GameManager.Instance.AlcohoGirlInFinish = true;
+            Debug.Log($"AlcohoGirl - HandleDoorEnter() - {i_OtherCollider.gameObject.name}"); // Added for debugging purposes
+            IsFinished = true;
             GameManager.Instance.CheckLevelFinish();
         } 
     }
     
-    private void HandleDoorExit(Collider2D i_Collider)
+    private void OnTriggerExit2D(Collider2D i_OtherCollider)
     {
-        if (i_Collider.gameObject.CompareTag("AlcohoGirlDoor"))
+        Debug.Log($"AlcohoGirl - OnTriggerExit2D() - {i_OtherCollider.gameObject.name}"); // Added for debugging purposes
+        HandleDoorExit(i_OtherCollider);
+    }
+    
+    private void HandleDoorExit(Collider2D i_OtherCollider)
+    {
+        if (i_OtherCollider.gameObject.CompareTag("AlcohoGirlDoor"))
         {
-            Debug.Log("AlcohoGirl - HandleDoorExit()."); // Added for debugging purposes
-            GameManager.Instance.AlcohoGirlInFinish = false;
+            Debug.Log($"AlcohoGirl - HandleDoorExit() - {i_OtherCollider.gameObject.name}"); // Added for debugging purposes
+            IsFinished = false;
         } 
     }
 }

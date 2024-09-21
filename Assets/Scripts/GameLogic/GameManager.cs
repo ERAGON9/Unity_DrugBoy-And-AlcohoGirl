@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
+    [Header("Properties")]
     [SerializeField] private GameObject m_CanvasLevelFinishedObject;
-    public bool DrugBoyInFinish = false;
-    public bool AlcohoGirlInFinish = false;
+    [SerializeField] private DrugBoy m_DrugBoy;
+    [SerializeField] private AlcohoGirl m_AlcohoGirl;
     
     private int m_CurrentScore = 0;
     private bool m_IsLevelAlreadyFinish = false;
@@ -41,7 +42,7 @@ public class GameManager : Singleton<GameManager>
     
     public void CheckLevelFinish()
     {
-        if (AlcohoGirlInFinish && DrugBoyInFinish && !m_IsLevelAlreadyFinish)
+        if (m_DrugBoy.IsFinished && m_AlcohoGirl.IsFinished && !m_IsLevelAlreadyFinish)
         {
             if (isCurrentScoreEqualMaxScore())
             {
@@ -61,7 +62,6 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("You win!"); // Added for debugging purposes
         
         CanvasDuringGame.Instance.RunTimer = false;
-        //TODO: Stop players movement
         stopPlayersMovement();
         activateCanvasLevelFinished();
         string currentTime = CanvasDuringGame.Instance.CurrentTimeText.text;

@@ -16,7 +16,7 @@ public class ButtonElevator : MonoBehaviour
     {
         if (i_OtherCollider.gameObject.CompareTag("Player"))
         {
-            Debug.Log($"{i_OtherCollider.gameObject.name} -  HandlePlayerTriggerEnter()."); // Added for debugging purposes
+            Debug.Log($"ButtonElevator - HandlePlayerTriggerEnter() - {i_OtherCollider.gameObject.name}"); // Added for debugging purposes
             m_ConnectedElevator.IsActivated = true;
         }
     }
@@ -30,7 +30,7 @@ public class ButtonElevator : MonoBehaviour
     {
         if (i_OtherCollider.gameObject.CompareTag("Player"))
         {
-            Debug.Log($"{i_OtherCollider.gameObject.name} -  HandlePlayerTriggerExit()."); // Added for debugging purposes
+            Debug.Log($"ButtonElevator - HandlePlayerTriggerExit() - {i_OtherCollider.gameObject.name}"); // Added for debugging purposes
             m_ConnectedElevator.IsActivated = false;
         }
     }

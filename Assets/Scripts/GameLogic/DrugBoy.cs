@@ -5,14 +5,17 @@ using UnityEngine;
 
 public class DrugBoy : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D i_Collioion)
+    public bool IsFinished { get; private set; } = false;
+    
+    
+    private void OnCollisionEnter2D(Collision2D i_OtherCollioion)
     {
-        handlePoolCollision(i_Collioion);
+        handlePoolCollision(i_OtherCollioion);
     }
     
-    private void handlePoolCollision(Collision2D i_Collision)
+    private void handlePoolCollision(Collision2D i_OtherCollioion)
     {
-        if (i_Collision.gameObject.CompareTag("WaterPool") || i_Collision.gameObject.CompareTag("AlcoholPool"))
+        if (i_OtherCollioion.gameObject.CompareTag("WaterPool") || i_OtherCollioion.gameObject.CompareTag("AlcoholPool"))
         {
             MoveToInitialPosition();
         }
@@ -23,44 +26,44 @@ public class DrugBoy : MonoBehaviour
         transform.position = DrugBoyController.Instance.InitialPosition;
     }
     
-    private void OnTriggerEnter2D(Collider2D i_Collider)
+    private void OnTriggerEnter2D(Collider2D i_OtherCollider)
     {
-        Debug.Log($"DrugBoy - OnTriggerEnter2D(). {i_Collider.gameObject.name}"); // Added for debugging purposes
-        HandleWeedBottleTrigger(i_Collider);
-        HandleDoorEnter(i_Collider);
+        Debug.Log($"DrugBoy - OnTriggerEnter2D() - {i_OtherCollider.gameObject.name}"); // Added for debugging purposes
+        HandleWeedBottleTrigger(i_OtherCollider);
+        HandleDoorEnter(i_OtherCollider);
     }
 
-    private void OnTriggerExit2D(Collider2D i_Collider)
+    private void HandleWeedBottleTrigger(Collider2D i_OtherCollider)
     {
-        HandleDoorExit(i_Collider);
-    }
-
-    private void HandleWeedBottleTrigger(Collider2D i_Collider)
-    {
-        if (i_Collider.gameObject.CompareTag("WeedBottle") && !i_Collider.gameObject.GetComponent<Loot>().IsCollected)
+        if (i_OtherCollider.gameObject.CompareTag("WeedBottle") && !i_OtherCollider.gameObject.GetComponent<Loot>().IsCollected)
         {
-            i_Collider.gameObject.GetComponent<Loot>().IsCollected = true;
+            i_OtherCollider.gameObject.GetComponent<Loot>().IsCollected = true;
             GameManager.Instance.AddPoints(10);
-            Destroy(i_Collider.gameObject);
+            Destroy(i_OtherCollider.gameObject);
         }
     }
 
-    private void HandleDoorEnter(Collider2D i_Collider)
+    private void HandleDoorEnter(Collider2D i_OtherCollider)
     {
-        if (i_Collider.gameObject.CompareTag("DrugBoyDoor"))
+        if (i_OtherCollider.gameObject.CompareTag("DrugBoyDoor"))
         {
-            Debug.Log("DrugBoy - HandleDoorEnter()."); // Added for debugging purposes
-            GameManager.Instance.DrugBoyInFinish = true;
+            Debug.Log($"DrugBoy - HandleDoorEnter() - {i_OtherCollider.gameObject.name}"); // Added for debugging purposes
+            IsFinished = true;
             GameManager.Instance.CheckLevelFinish();
         } 
     }
     
-    private void HandleDoorExit(Collider2D i_Collider)
+    private void OnTriggerExit2D(Collider2D i_OtherCollider)
     {
-        if (i_Collider.gameObject.CompareTag("DrugBoyDoor"))
+        HandleDoorExit(i_OtherCollider);
+    }
+    
+    private void HandleDoorExit(Collider2D i_OtherCollider)
+    {
+        if (i_OtherCollider.gameObject.CompareTag("DrugBoyDoor"))
         {
-            Debug.Log("DrugBoy - HandleDoorExit()."); // Added for debugging purposes
-            GameManager.Instance.DrugBoyInFinish = false;
+            Debug.Log($"DrugBoy - HandleDoorExit() - {i_OtherCollider.gameObject.name}"); // Added for debugging purposes
+            IsFinished = false;
         } 
     }
 }

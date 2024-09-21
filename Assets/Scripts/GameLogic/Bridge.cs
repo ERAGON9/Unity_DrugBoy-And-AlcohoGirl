@@ -20,7 +20,7 @@ public class Bridge : MonoBehaviour
     {
         if (IsActivated && m_Rigidbody2D.rotation > 0)
         {
-            float newRotation = m_Rigidbody2D.rotation - m_RotateSpeed * Time.fixedDeltaTime;
+            float newRotation = m_Rigidbody2D.rotation - (m_RotateSpeed * Time.fixedDeltaTime);
             if (newRotation < 0.1f) // Small threshold to reset the rotation to 0
             {
                 newRotation = 0;

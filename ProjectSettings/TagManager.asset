@@ -20,20 +20,20 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
+  - DrugBoy
+  - AlcohoGirl
+  - 
   - Ground
   - GroundCheck
   - 
+  - DrugPool
+  - AlcoholPool
   - 
+  - AlcohoGirlDoor
+  - DrugBoyDoor
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - AlcoholBottle
+  - WeedBottle
   - 
   - 
   - 

@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 7015923}
   - component: {fileID: 7015922}
   - component: {fileID: 7015920}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Weed Bottle
   m_TagString: WeedBottle
   m_Icon: {fileID: 0}
@@ -596,7 +596,7 @@ GameObject:
   - component: {fileID: 111334710}
   - component: {fileID: 111334712}
   - component: {fileID: 111334709}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Elevator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -768,7 +768,7 @@ GameObject:
   - component: {fileID: 208688374}
   - component: {fileID: 208688376}
   - component: {fileID: 208688375}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Ground 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -898,7 +898,7 @@ GameObject:
   - component: {fileID: 275082127}
   - component: {fileID: 275082128}
   - component: {fileID: 275082129}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: DrugBoy door
   m_TagString: DrugBoyDoor
   m_Icon: {fileID: 0}
@@ -1189,7 +1189,7 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 862099233}
   m_GroundLayerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 512
   m_Grounded: 0
   m_JumpBufferTime: 0.1
 --- !u!4 &323807461
@@ -1338,7 +1338,7 @@ GameObject:
   - component: {fileID: 377515846}
   - component: {fileID: 377515845}
   - component: {fileID: 377515843}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Alcohol Bottle (1)
   m_TagString: AlcoholBottle
   m_Icon: {fileID: 0}
@@ -1536,7 +1536,7 @@ GameObject:
   - component: {fileID: 504531266}
   - component: {fileID: 504531265}
   - component: {fileID: 504531264}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Drug Pool floor 1
   m_TagString: DrugPool
   m_Icon: {fileID: 0}
@@ -1781,7 +1781,7 @@ GameObject:
   - component: {fileID: 767738102}
   - component: {fileID: 767738105}
   - component: {fileID: 767738101}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Bridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2832,7 +2832,7 @@ GameObject:
   - component: {fileID: 1125148561}
   - component: {fileID: 1125148563}
   - component: {fileID: 1125148562}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3096,7 +3096,7 @@ GameObject:
   - component: {fileID: 1732119001}
   - component: {fileID: 1732119003}
   - component: {fileID: 1732119002}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: AlcohoGirl door
   m_TagString: AlcohoGirlDoor
   m_Icon: {fileID: 0}
@@ -3611,7 +3611,7 @@ GameObject:
   - component: {fileID: 1363967309}
   - component: {fileID: 1363967308}
   - component: {fileID: 1363967306}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Weed Bottle (1)
   m_TagString: WeedBottle
   m_Icon: {fileID: 0}
@@ -3894,7 +3894,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1422132821}
   - component: {fileID: 862099233}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Ground Check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3927,7 +3927,7 @@ GameObject:
   - component: {fileID: 1460400242}
   - component: {fileID: 1460400244}
   - component: {fileID: 1460400243}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Ground 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4058,7 +4058,7 @@ GameObject:
   - component: {fileID: 1486315126}
   - component: {fileID: 1486315122}
   - component: {fileID: 1486315127}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Alcohol Bottle
   m_TagString: AlcoholBottle
   m_Icon: {fileID: 0}
@@ -4671,8 +4671,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CanvasLevelFinishedObject: {fileID: 323909003}
-  DrugBoyInFinish: 0
-  AlcohoGirlInFinish: 0
+  m_DrugBoy: {fileID: 1088593011}
+  m_AlcohoGirl: {fileID: 8757333511827539437}
 --- !u!4 &1616052357
 Transform:
   m_ObjectHideFlags: 0
@@ -5139,7 +5139,7 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 1669226852991526445}
   m_GroundLayerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 512
   m_Grounded: 0
   m_JumpBufferTime: 0.1
 --- !u!1 &1725576543
@@ -5621,7 +5621,7 @@ GameObject:
   - component: {fileID: 1895475707}
   - component: {fileID: 1895475706}
   - component: {fileID: 1895475705}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Alcohol Pool floor 1
   m_TagString: AlcoholPool
   m_Icon: {fileID: 0}
@@ -6210,7 +6210,7 @@ GameObject:
   - component: {fileID: 8757333511827539439}
   - component: {fileID: 3659690086817027868}
   - component: {fileID: 8757333511827539438}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: AlcohoGirl
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -6413,7 +6413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 403170946332116919}
   - component: {fileID: 1669226852991526445}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Ground Check
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -6,7 +6,6 @@ using UnityEngine;
 public class AlcohoGirlController : ControllerSingleton<AlcohoGirlController>
 {
     
-    // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
@@ -15,7 +14,6 @@ public class AlcohoGirlController : ControllerSingleton<AlcohoGirlController>
         m_JumpKey = KeyCode.W;
     }
     
-    // Update is called once per frame
     protected override void Update()
     {
         base.Update();
