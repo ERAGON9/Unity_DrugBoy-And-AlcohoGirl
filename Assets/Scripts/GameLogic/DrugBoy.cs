@@ -25,6 +25,7 @@ public class DrugBoy : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D i_Collider)
     {
+        Debug.Log($"DrugBoy - OnTriggerEnter2D(). {i_Collider.gameObject.name}"); // Added for debugging purposes
         HandleWeedBottleTrigger(i_Collider);
         HandleDoorEnter(i_Collider);
     }
@@ -48,8 +49,9 @@ public class DrugBoy : MonoBehaviour
     {
         if (i_Collider.gameObject.CompareTag("DrugBoyDoor"))
         {
+            Debug.Log("DrugBoy - HandleDoorEnter()."); // Added for debugging purposes
             GameManager.Instance.DrugBoyInFinish = true;
-            GameManager.Instance.CheckWin();
+            GameManager.Instance.CheckLevelFinish();
         } 
     }
     
@@ -57,6 +59,7 @@ public class DrugBoy : MonoBehaviour
     {
         if (i_Collider.gameObject.CompareTag("DrugBoyDoor"))
         {
+            Debug.Log("DrugBoy - HandleDoorExit()."); // Added for debugging purposes
             GameManager.Instance.DrugBoyInFinish = false;
         } 
     }

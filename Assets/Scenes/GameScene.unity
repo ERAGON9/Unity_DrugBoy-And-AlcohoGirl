@@ -133,7 +133,6 @@ GameObject:
   - component: {fileID: 7015919}
   - component: {fileID: 7015923}
   - component: {fileID: 7015922}
-  - component: {fileID: 7015921}
   - component: {fileID: 7015920}
   m_Layer: 0
   m_Name: Weed Bottle
@@ -189,44 +188,9 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0005635023, y: 0.16525352}
-  m_Size: {x: 0.107590914, y: 0.17619777}
+  m_Offset: {x: 0.0021, y: -0.0032184}
+  m_Size: {x: 0.392, y: 0.5053}
   m_Direction: 0
---- !u!58 &7015921
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7015918}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0013287067, y: -0.07823712}
-  serializedVersion: 2
-  m_Radius: 0.20164287
 --- !u!212 &7015922
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -950,7 +914,7 @@ Transform:
   m_GameObject: {fileID: 275082126}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6, y: 2.6, z: 1}
+  m_LocalPosition: {x: 6.9, y: 2.6, z: 1}
   m_LocalScale: {x: 1, y: 1.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1373,7 +1337,6 @@ GameObject:
   - component: {fileID: 377515842}
   - component: {fileID: 377515846}
   - component: {fileID: 377515845}
-  - component: {fileID: 377515844}
   - component: {fileID: 377515843}
   m_Layer: 0
   m_Name: Alcohol Bottle (1)
@@ -1429,44 +1392,9 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0005635023, y: 0.16525352}
-  m_Size: {x: 0.107590914, y: 0.17619777}
+  m_Offset: {x: 0.0021, y: -0.0032184}
+  m_Size: {x: 0.392, y: 0.5053}
   m_Direction: 0
---- !u!58 &377515844
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 377515841}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.00034868717, y: -0.07823712}
-  serializedVersion: 2
-  m_Radius: 0.20009983
 --- !u!212 &377515845
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3682,7 +3610,6 @@ GameObject:
   - component: {fileID: 1363967305}
   - component: {fileID: 1363967309}
   - component: {fileID: 1363967308}
-  - component: {fileID: 1363967307}
   - component: {fileID: 1363967306}
   m_Layer: 0
   m_Name: Weed Bottle (1)
@@ -3738,44 +3665,9 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0005635023, y: 0.16525352}
-  m_Size: {x: 0.107590914, y: 0.17619777}
+  m_Offset: {x: 0.0021, y: -0.0032184}
+  m_Size: {x: 0.392, y: 0.5053}
   m_Direction: 0
---- !u!58 &1363967307
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1363967304}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0013287067, y: -0.07823712}
-  serializedVersion: 2
-  m_Radius: 0.20164287
 --- !u!212 &1363967308
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4002,9 +3894,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1422132821}
   - component: {fileID: 862099233}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Ground Check
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4165,8 +4057,7 @@ GameObject:
   - component: {fileID: 1486315123}
   - component: {fileID: 1486315126}
   - component: {fileID: 1486315122}
-  - component: {fileID: 1486315125}
-  - component: {fileID: 1486315124}
+  - component: {fileID: 1486315127}
   m_Layer: 0
   m_Name: Alcohol Bottle
   m_TagString: AlcoholBottle
@@ -4241,7 +4132,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1104468799}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &1486315124
+--- !u!114 &1486315126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486315121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe10127257e962c46949403375ab1a4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!70 &1486315127
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4273,56 +4176,9 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0005635023, y: 0.16525352}
-  m_Size: {x: 0.107590914, y: 0.17619777}
+  m_Offset: {x: 0.0021, y: -0.0032184}
+  m_Size: {x: 0.392, y: 0.5053}
   m_Direction: 0
---- !u!58 &1486315125
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1486315121}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.00034868717, y: -0.07823712}
-  serializedVersion: 2
-  m_Radius: 0.20009983
---- !u!114 &1486315126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1486315121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe10127257e962c46949403375ab1a4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1506198644
 GameObject:
   m_ObjectHideFlags: 0
@@ -5439,7 +5295,7 @@ Transform:
   m_GameObject: {fileID: 1205820698}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.6, y: 2.6, z: 1}
+  m_LocalPosition: {x: 5.5, y: 2.6, z: 1}
   m_LocalScale: {x: 1, y: 1.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6557,9 +6413,9 @@ GameObject:
   m_Component:
   - component: {fileID: 403170946332116919}
   - component: {fileID: 1669226852991526445}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Ground Check
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

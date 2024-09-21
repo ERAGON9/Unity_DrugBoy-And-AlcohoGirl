@@ -25,6 +25,7 @@ public abstract class Controller : MonoBehaviour
     [SerializeField] private float m_JumpBufferTime = 0.1f;
     
     public Vector2 InitialPosition => m_InitialPosition;
+    public bool CharacterPaused { get; set; } = false;
     
     // Input Controls - Inherits need to set these values.
     protected KeyCode m_LeftKey;
@@ -44,13 +45,20 @@ public abstract class Controller : MonoBehaviour
     
     protected virtual void Update()
     {
-        checkInput();
-        handleJumping();
+        if (!CharacterPaused)
+        {
+            checkInput();
+            handleJumping();
+        }
     }
 
     protected virtual void FixedUpdate()
     {
-        handleMovement();
+        if (!CharacterPaused)
+        {
+            handleMovement();
+        }
+
         checkIfOnGround();
         applyFriction();
     }
@@ -151,13 +159,13 @@ public abstract class Controller : MonoBehaviour
         
     private void checkIfOnGround()
     {
-        m_Grounded = Physics2D.OverlapAreaAll(m_GroundCheck.bounds.min, m_GroundCheck.bounds.max,
-                                                    m_GroundLayerMask).Length > 0;
+        m_Grounded = Physics2D.OverlapArea(m_GroundCheck.bounds.min, m_GroundCheck.bounds.max,
+                                                    m_GroundLayerMask) != null;
     }
     
     private void applyFriction()
     {
-        if (m_Grounded && !m_PressLeft && !m_PressRight && m_PlayerRigidbody2D.velocity.y <= 0)
+        if (m_Grounded && !IsCharacterMoveOrStartJump() && m_PlayerRigidbody2D.velocity.x != 0)
         {
             Vector2 velocity = m_PlayerRigidbody2D.velocity;
             velocity.x *= m_GroundFriction;
@@ -168,5 +176,15 @@ public abstract class Controller : MonoBehaviour
 
             m_PlayerRigidbody2D.velocity = velocity;
         }
+    }
+    
+    private bool IsCharacterMoveOrStartJump()
+    {
+        if (m_PressLeft || m_PressRight || m_PlayerRigidbody2D.velocity.y > 0)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

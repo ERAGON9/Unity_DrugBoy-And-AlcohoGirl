@@ -7,28 +7,30 @@ public class ButtonElevator : MonoBehaviour
     [SerializeField] private Elevator m_ConnectedElevator;
     
     
-    private void OnTriggerEnter2D(Collider2D i_Collider)
+    private void OnTriggerEnter2D(Collider2D i_OtherCollider)
     {
-        HandlePlayerTriggerEnter(i_Collider);
+        HandlePlayerTriggerEnter(i_OtherCollider);
     }
     
-    private void HandlePlayerTriggerEnter(Collider2D i_Collider)
+    private void HandlePlayerTriggerEnter(Collider2D i_OtherCollider)
     {
-        if (i_Collider.gameObject.CompareTag("Player"))
+        if (i_OtherCollider.gameObject.CompareTag("Player"))
         {
+            Debug.Log($"{i_OtherCollider.gameObject.name} -  HandlePlayerTriggerEnter()."); // Added for debugging purposes
             m_ConnectedElevator.IsActivated = true;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D i_OtherCollider)
     {
-        HandlePlayerTriggerExit(other);
+        HandlePlayerTriggerExit(i_OtherCollider);
     }
 
-    private void HandlePlayerTriggerExit(Collider2D other)
+    private void HandlePlayerTriggerExit(Collider2D i_OtherCollider)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (i_OtherCollider.gameObject.CompareTag("Player"))
         {
+            Debug.Log($"{i_OtherCollider.gameObject.name} -  HandlePlayerTriggerExit()."); // Added for debugging purposes
             m_ConnectedElevator.IsActivated = false;
         }
     }
