@@ -10,8 +10,8 @@ public class Elevator : MonoBehaviour
     [SerializeField] private float m_MovementSpeed; 
     [SerializeField] private float m_MovementDistance;
     
-    public bool IsActivated { get; set; } = false;
-    
+    public int ButtonsPressed = 0;
+
     private Vector3 m_InitialPosition;
     
     
@@ -28,7 +28,7 @@ public class Elevator : MonoBehaviour
 
     private void moveUp()
     {
-        if (IsActivated && transform.position.y < m_InitialPosition.y + m_MovementDistance)
+        if (IsActivated() && transform.position.y < m_InitialPosition.y + m_MovementDistance)
         {
             Vector2 newPosition = new Vector2(transform.position.x, transform.position.y + (m_MovementSpeed * Time.fixedDeltaTime));
             m_Rigidbody2D.MovePosition(newPosition);
@@ -37,10 +37,20 @@ public class Elevator : MonoBehaviour
     
     private void moveDown()
     {
-        if (!IsActivated && transform.position.y > m_InitialPosition.y)
+        if (!IsActivated() && transform.position.y > m_InitialPosition.y)
         {
             Vector2 newPosition = new Vector2(transform.position.x, transform.position.y - (m_MovementSpeed * Time.fixedDeltaTime));
             m_Rigidbody2D.MovePosition(newPosition);
         }
+    }
+
+    private bool IsActivated()
+    {
+        if (ButtonsPressed > 0)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
