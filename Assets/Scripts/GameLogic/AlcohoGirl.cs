@@ -31,7 +31,6 @@ public class AlcohoGirl : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D i_OtherCollider)
     {
-        Debug.Log($"AlcohoGirl - OnTriggerEnter2D(). {i_OtherCollider.gameObject.name}"); // Added for debugging purposes
         HandleAlcoholBottleTrigger(i_OtherCollider);
         HandleDoorEnter(i_OtherCollider);
     }
@@ -51,7 +50,6 @@ public class AlcohoGirl : MonoBehaviour
     {
         if (i_OtherCollider.gameObject.CompareTag("AlcohoGirlDoor"))
         {
-            Debug.Log($"AlcohoGirl - HandleDoorEnter() - {i_OtherCollider.gameObject.name}"); // Added for debugging purposes
             IsFinished = true;
             GameManager.Instance.CheckLevelFinish();
         } 
@@ -59,7 +57,6 @@ public class AlcohoGirl : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D i_OtherCollider)
     {
-        Debug.Log($"AlcohoGirl - OnTriggerExit2D() - {i_OtherCollider.gameObject.name}"); // Added for debugging purposes
         HandleDoorExit(i_OtherCollider);
     }
     
@@ -67,7 +64,6 @@ public class AlcohoGirl : MonoBehaviour
     {
         if (i_OtherCollider.gameObject.CompareTag("AlcohoGirlDoor"))
         {
-            Debug.Log($"AlcohoGirl - HandleDoorExit() - {i_OtherCollider.gameObject.name}"); // Added for debugging purposes
             IsFinished = false;
         } 
     }

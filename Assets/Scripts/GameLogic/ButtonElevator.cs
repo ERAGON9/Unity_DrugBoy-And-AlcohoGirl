@@ -7,7 +7,6 @@ public class ButtonElevator : MonoBehaviour
     [SerializeField] private Elevator m_ConnectedElevator;
     
     
-    
     private void OnTriggerEnter2D(Collider2D i_OtherCollider)
     {
         HandlePlayerTriggerEnter(i_OtherCollider);
@@ -17,7 +16,6 @@ public class ButtonElevator : MonoBehaviour
     {
         if (i_OtherCollider.gameObject.CompareTag("Player"))
         {
-            Debug.Log($"ButtonElevator - HandlePlayerTriggerEnter() - {i_OtherCollider.gameObject.name}"); // Added for debugging purposes
             m_ConnectedElevator.ButtonsPressed++;
         }
     }
@@ -31,7 +29,6 @@ public class ButtonElevator : MonoBehaviour
     {
         if (i_OtherCollider.gameObject.CompareTag("Player"))
         {
-            Debug.Log($"ButtonElevator - HandlePlayerTriggerExit() - {i_OtherCollider.gameObject.name}"); // Added for debugging purposes
             m_ConnectedElevator.ButtonsPressed--;
         }
     }

@@ -59,8 +59,6 @@ public class GameManager : Singleton<GameManager>
     
     private void handleLevelFinish()
     {
-        Debug.Log("You win!"); // Added for debugging purposes
-        
         CanvasDuringGame.Instance.RunTimer = false;
         stopPlayersMovement();
         activateCanvasLevelFinished();

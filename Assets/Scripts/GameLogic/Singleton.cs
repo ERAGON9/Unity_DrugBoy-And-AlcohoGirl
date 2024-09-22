@@ -20,7 +20,6 @@ public class Singleton<T> : MonoBehaviour where T: MonoBehaviour
             {
                 var singletonObject = new GameObject(typeof(T).Name);
                 _instance = singletonObject.AddComponent<T>();
-                Debug.Log($"{typeof(T).Name} instance created."); // Added for debugging purposes
             }
             
             return _instance;
@@ -31,7 +30,6 @@ public class Singleton<T> : MonoBehaviour where T: MonoBehaviour
     {
         if (_instance == this)
         {
-            Debug.Log($"{typeof(T).Name} instance destroyed."); // Added for debugging purposes
             _instance = null;
         }
     }
