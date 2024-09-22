@@ -5,6 +5,12 @@ using UnityEngine.Serialization;
 
 public abstract class Controller : MonoBehaviour
 {
+    private enum Direction
+    {
+        Left,
+        Right
+    }
+
     private const int k_FaceDirectionLeft = -1;
     private const int k_FaceDirectionRight = 1;
     
@@ -100,40 +106,40 @@ public abstract class Controller : MonoBehaviour
     
     private void handleMovement()
     {
-        // Move left and right are very similar
-        // We can convert it to a function that gets the pressed key and then
-        // Just do conditions for the small differences
         if (m_PressLeft)
         {
-            moveLeft();
+            move(Direction.Left);
         }
         else if (m_PressRight)
         {
-            movedRight();
+            move(Direction.Right);
         }
     }
-
-    private void moveLeft()
+    
+    private void move(Direction i_Direction)
     {
         Vector2 velocity = m_PlayerRigidbody2D.velocity;
-        
-        if (velocity.x >= 0) // Switch direction.
+
+        if (i_Direction == Direction.Left && velocity.x > 0 || i_Direction == Direction.Right && velocity.x < 0)
         {
             velocity = switchVelocityDirection(velocity);
         }
 
-        velocity.x -= m_MovementSpeed * Time.fixedDeltaTime;
+        float DeltaX = m_MovementSpeed * Time.fixedDeltaTime;
+        if (i_Direction == Direction.Left)
+        {
+            DeltaX *= -1;
+        }
+        
+        velocity.x += DeltaX;
         velocity.x = Mathf.Clamp(velocity.x, -m_MaxMovementSpeed, m_MaxMovementSpeed); // Speed limit.
         m_PlayerRigidbody2D.velocity = velocity;
-        updateCharacterFaceDirection(k_FaceDirectionLeft);
+        updateCharacterFaceDirection(i_Direction == Direction.Left ? k_FaceDirectionLeft : k_FaceDirectionRight);
     }
 
     private Vector2 switchVelocityDirection(Vector2 i_Velocity)
     {
-        if (i_Velocity.x != 0)
-        {
-            i_Velocity.x *= -1;
-        }
+        i_Velocity.x *= -1;
 
         return i_Velocity;
     }
@@ -143,21 +149,6 @@ public abstract class Controller : MonoBehaviour
         Vector3 scale = m_PlayerRigidbody2D.transform.localScale;
         scale.x = i_Direction;
         m_PlayerRigidbody2D.transform.localScale = scale;
-    }
-    
-    private void movedRight()
-    {
-        Vector2 velocity = m_PlayerRigidbody2D.velocity;
-
-        if (velocity.x <= 0) // Switch direction.
-        {
-            velocity = switchVelocityDirection(velocity);
-        }
-
-        velocity.x += m_MovementSpeed * Time.fixedDeltaTime;
-        velocity.x = Mathf.Clamp(velocity.x, -m_MaxMovementSpeed, m_MaxMovementSpeed); // Speed limit.
-        m_PlayerRigidbody2D.velocity = velocity;
-        updateCharacterFaceDirection(k_FaceDirectionRight);
     }
         
     private void checkIfOnGround()
