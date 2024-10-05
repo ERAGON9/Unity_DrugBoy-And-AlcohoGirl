@@ -1,36 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonElevator : MonoBehaviour
+namespace GameLogic
 {
-    [Header("Button Elevator Settings")]
-    [SerializeField] private Elevator m_ConnectedElevator;
-    
-    
-    private void OnTriggerEnter2D(Collider2D i_OtherCollider)
+    public class ButtonElevator : MonoBehaviour
     {
-        handlePlayerTriggerEnter(i_OtherCollider);
-    }
+        [Header("Button Elevator Settings")]
+        [SerializeField] private Elevator m_ConnectedElevator;
     
-    private void handlePlayerTriggerEnter(Collider2D i_OtherCollider)
-    {
-        if (i_OtherCollider.gameObject.CompareTag("Player"))
+    
+        private void OnTriggerEnter2D(Collider2D i_OtherCollider)
         {
-            m_ConnectedElevator.ButtonsPressed++;
+            handlePlayerTriggerEnter(i_OtherCollider);
         }
-    }
-
-    private void OnTriggerExit2D(Collider2D i_OtherCollider)
-    {
-        handlePlayerTriggerExit(i_OtherCollider);
-    }
-
-    private void handlePlayerTriggerExit(Collider2D i_OtherCollider)
-    {
-        if (i_OtherCollider.gameObject.CompareTag("Player"))
+    
+        private void handlePlayerTriggerEnter(Collider2D i_OtherCollider)
         {
-            m_ConnectedElevator.ButtonsPressed--;
+            if (i_OtherCollider.gameObject.CompareTag("Player"))
+            {
+                m_ConnectedElevator.ButtonsPressed++;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D i_OtherCollider)
+        {
+            handlePlayerTriggerExit(i_OtherCollider);
+        }
+
+        private void handlePlayerTriggerExit(Collider2D i_OtherCollider)
+        {
+            if (i_OtherCollider.gameObject.CompareTag("Player"))
+            {
+                m_ConnectedElevator.ButtonsPressed--;
+            }
         }
     }
 }

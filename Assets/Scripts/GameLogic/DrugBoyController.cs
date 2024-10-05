@@ -1,15 +1,15 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class DrugBoyController : ControllerSingleton<DrugBoyController>
+namespace GameLogic
 {
-    protected override void Start()
+    public class DrugBoyController : ControllerSingleton<DrugBoyController>
     {
-        base.Start();
-        m_LeftKey = KeyCode.LeftArrow;
-        m_RightKey = KeyCode.RightArrow;
-        m_JumpKey = KeyCode.UpArrow;
+        protected override void Start()
+        {
+            base.Start();
+            m_LeftKey = KeyCode.LeftArrow;
+            m_RightKey = KeyCode.RightArrow;
+            m_JumpKey = KeyCode.UpArrow;
+        }
     }
 }

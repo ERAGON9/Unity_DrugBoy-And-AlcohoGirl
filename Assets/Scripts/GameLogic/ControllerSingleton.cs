@@ -1,36 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ControllerSingleton<T> : Controller where T: MonoBehaviour
+namespace GameLogic
 {
-    private static T _instance;
-
-    // Property to access the instance
-    public static T Instance
+    public abstract class ControllerSingleton<T> : Controller where T: MonoBehaviour
     {
-        get
-        {
-            if (_instance != null) return _instance;
-            
-            // If the instance doesn't exist, find it in the scene
-            _instance = FindObjectOfType<T>();
+        private static T _instance;
 
-            if (_instance == null)
+        // Property to access the instance
+        public static T Instance
+        {
+            get
             {
-                var singletonObject = new GameObject(typeof(T).Name);
-                _instance = singletonObject.AddComponent<T>();
-            }
+                if (_instance != null) return _instance;
             
-            return _instance;
-        }
-    }
+                // If the instance doesn't exist, find it in the scene
+                _instance = FindObjectOfType<T>();
 
-    protected virtual void OnDestroy()
-    {
-        if (_instance == this)
+                if (_instance == null)
+                {
+                    var singletonObject = new GameObject(typeof(T).Name);
+                    _instance = singletonObject.AddComponent<T>();
+                }
+            
+                return _instance;
+            }
+        }
+
+        protected virtual void OnDestroy()
         {
-            _instance = null;
+            if (_instance == this)
+            {
+                _instance = null;
+            }
         }
     }
 }

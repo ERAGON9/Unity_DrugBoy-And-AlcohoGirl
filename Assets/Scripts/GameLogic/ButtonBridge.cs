@@ -1,24 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonBridge : MonoBehaviour
+namespace GameLogic
 {
-    [Header("Button Bridge Settings")]
-    [SerializeField] private Bridge m_ConnectedBridge;
-    
-    
-    private void OnTriggerEnter2D(Collider2D i_OtherCollider)
+    public class ButtonBridge : MonoBehaviour
     {
-        handlePlayerTriggerEnter(i_OtherCollider);
-    }
+        [Header("Button Bridge Settings")]
+        [SerializeField] private Bridge m_ConnectedBridge;
     
-    private void handlePlayerTriggerEnter(Collider2D i_OtherCollider)
-    {
-        if (i_OtherCollider.gameObject.CompareTag("Player"))
+    
+        private void OnTriggerEnter2D(Collider2D i_OtherCollider)
         {
-            m_ConnectedBridge.IsActivated = true;
-            Destroy(this.gameObject);
+            handlePlayerTriggerEnter(i_OtherCollider);
+        }
+    
+        private void handlePlayerTriggerEnter(Collider2D i_OtherCollider)
+        {
+            if (i_OtherCollider.gameObject.CompareTag("Player"))
+            {
+                m_ConnectedBridge.IsActivated = true;
+                Destroy(this.gameObject);
+            }
         }
     }
 }
