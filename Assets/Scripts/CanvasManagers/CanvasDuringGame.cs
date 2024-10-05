@@ -8,9 +8,11 @@ public class CanvasDuringGame : Singleton<CanvasDuringGame>
 {
     private const string k_MaxScorePreview = "Max Score";
     
+    [Header("Canvas During Game Settings")]
     [SerializeField] private TextMeshProUGUI m_CurrentScoreText;
     [SerializeField] private TextMeshProUGUI m_CurrentTimeText;
     [SerializeField] private TextMeshProUGUI m_LootInfoMsgText;
+    
     public TextMeshProUGUI CurrentTimeText => m_CurrentTimeText;
     public bool RunTimer { get; set; } = true;
     
@@ -21,11 +23,11 @@ public class CanvasDuringGame : Singleton<CanvasDuringGame>
     {
         if (RunTimer)
         {
-            UpdateCurrentTime();
+            updateCurrentTime();
         }
     }
     
-    private void UpdateCurrentTime()
+    private void updateCurrentTime()
     {
         m_ElapsedTime += Time.deltaTime;
         int minutes = Mathf.FloorToInt(m_ElapsedTime / 60);

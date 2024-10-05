@@ -11,29 +11,29 @@ public class AlcohoGirl : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D i_OtherCollision)
     {
-        HandlePoolCollision(i_OtherCollision);
+        handlePoolCollision(i_OtherCollision);
     }
 
-    private void HandlePoolCollision(Collision2D i_OtherCollision)
+    private void handlePoolCollision(Collision2D i_OtherCollision)
     {
         if (i_OtherCollision.gameObject.CompareTag("WaterPool") || i_OtherCollision.gameObject.CompareTag("DrugPool"))
         {
-            MoveToInitialPosition();
+            moveToInitialPosition();
         }
     }
     
-    private void MoveToInitialPosition()
+    private void moveToInitialPosition()
     {
         transform.position = AlcohoGirlController.Instance.InitialPosition;
     }
     
     private void OnTriggerEnter2D(Collider2D i_OtherCollider)
     {
-        HandleAlcoholBottleTrigger(i_OtherCollider);
-        HandleDoorEnter(i_OtherCollider);
+        handleAlcoholBottleTrigger(i_OtherCollider);
+        handleDoorEnter(i_OtherCollider);
     }
 
-    private void HandleAlcoholBottleTrigger(Collider2D i_OtherCollider)
+    private void handleAlcoholBottleTrigger(Collider2D i_OtherCollider)
     {
         if (i_OtherCollider.gameObject.CompareTag("AlcoholBottle") && !i_OtherCollider.gameObject.GetComponent<Loot>().IsCollected)
         {
@@ -43,7 +43,7 @@ public class AlcohoGirl : MonoBehaviour
         }
     }
     
-    private void HandleDoorEnter(Collider2D i_OtherCollider)
+    private void handleDoorEnter(Collider2D i_OtherCollider)
     {
         if (i_OtherCollider.gameObject.CompareTag("AlcohoGirlDoor"))
         {
@@ -54,10 +54,10 @@ public class AlcohoGirl : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D i_OtherCollider)
     {
-        HandleDoorExit(i_OtherCollider);
+        handleDoorExit(i_OtherCollider);
     }
     
-    private void HandleDoorExit(Collider2D i_OtherCollider)
+    private void handleDoorExit(Collider2D i_OtherCollider)
     {
         if (i_OtherCollider.gameObject.CompareTag("AlcohoGirlDoor"))
         {

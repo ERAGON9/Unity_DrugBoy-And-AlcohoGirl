@@ -13,11 +13,12 @@ public class Elevator : MonoBehaviour
     public int ButtonsPressed = 0;
 
     private Vector3 m_InitialPosition;
-    
+    private Vector3 m_MaxedPosition;
     
     void Start()
     {
         m_InitialPosition = transform.position;
+        m_MaxedPosition = new Vector3(m_InitialPosition.x, m_InitialPosition.y + m_MovementDistance, m_InitialPosition.z);
     }
 
     private void FixedUpdate()
@@ -28,7 +29,7 @@ public class Elevator : MonoBehaviour
 
     private void moveUp()
     {
-        if (IsActivated() && transform.position.y < m_InitialPosition.y + m_MovementDistance)
+        if (isActivated() && transform.position.y < m_MaxedPosition.y)
         {
             Vector2 newPosition = new Vector2(transform.position.x, transform.position.y + (m_MovementSpeed * Time.fixedDeltaTime));
             m_Rigidbody2D.MovePosition(newPosition);
@@ -37,20 +38,15 @@ public class Elevator : MonoBehaviour
     
     private void moveDown()
     {
-        if (!IsActivated() && transform.position.y > m_InitialPosition.y)
+        if (!isActivated() && transform.position.y > m_InitialPosition.y)
         {
             Vector2 newPosition = new Vector2(transform.position.x, transform.position.y - (m_MovementSpeed * Time.fixedDeltaTime));
             m_Rigidbody2D.MovePosition(newPosition);
         }
     }
 
-    private bool IsActivated()
+    private bool isActivated()
     {
-        if (ButtonsPressed > 0)
-        {
-            return true;
-        }
-
-        return false;
+        return ButtonsPressed > 0;
     }
 }

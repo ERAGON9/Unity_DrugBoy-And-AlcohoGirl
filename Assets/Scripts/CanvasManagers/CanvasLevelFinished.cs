@@ -10,7 +10,8 @@ public class CanvasLevelFinished : Singleton<CanvasLevelFinished>
     private const string k_Score1Key = "Score1Text";
     private const string k_Score2Key = "Score2Text";
     private const string k_Score3Key = "Score3Text";
-
+    
+    [Header("Main Banner")]
     [SerializeField] private TextMeshProUGUI m_MainBannerText;
     
     [Header("Score Texts")]

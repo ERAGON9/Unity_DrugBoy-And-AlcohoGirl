@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    [Header("Level Settings")]
     [SerializeField] private int m_MaxScore;
     
     
-    // Start is called before the first frame update
     void Start()
     {
         GameManager.Instance.MaxLevelScore = m_MaxScore;

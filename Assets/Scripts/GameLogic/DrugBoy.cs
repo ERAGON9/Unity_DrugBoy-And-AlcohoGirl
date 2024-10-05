@@ -8,31 +8,31 @@ public class DrugBoy : MonoBehaviour
     public bool IsFinished { get; private set; } = false;
     
     
-    private void OnCollisionEnter2D(Collision2D i_OtherCollioion)
+    private void OnCollisionEnter2D(Collision2D i_OtherCollision)
     {
-        handlePoolCollision(i_OtherCollioion);
+        handlePoolCollision(i_OtherCollision);
     }
     
-    private void handlePoolCollision(Collision2D i_OtherCollioion)
+    private void handlePoolCollision(Collision2D i_OtherCollision)
     {
-        if (i_OtherCollioion.gameObject.CompareTag("WaterPool") || i_OtherCollioion.gameObject.CompareTag("AlcoholPool"))
+        if (i_OtherCollision.gameObject.CompareTag("WaterPool") || i_OtherCollision.gameObject.CompareTag("AlcoholPool"))
         {
-            MoveToInitialPosition();
+            moveToInitialPosition();
         }
     }
     
-    private void MoveToInitialPosition()
+    private void moveToInitialPosition()
     {
         transform.position = DrugBoyController.Instance.InitialPosition;
     }
     
     private void OnTriggerEnter2D(Collider2D i_OtherCollider)
     {
-        HandleWeedBottleTrigger(i_OtherCollider);
-        HandleDoorEnter(i_OtherCollider);
+        handleWeedBottleTrigger(i_OtherCollider);
+        handleDoorEnter(i_OtherCollider);
     }
 
-    private void HandleWeedBottleTrigger(Collider2D i_OtherCollider)
+    private void handleWeedBottleTrigger(Collider2D i_OtherCollider)
     {
         if (i_OtherCollider.gameObject.CompareTag("WeedBottle") && !i_OtherCollider.gameObject.GetComponent<Loot>().IsCollected)
         {
@@ -42,7 +42,7 @@ public class DrugBoy : MonoBehaviour
         }
     }
 
-    private void HandleDoorEnter(Collider2D i_OtherCollider)
+    private void handleDoorEnter(Collider2D i_OtherCollider)
     {
         if (i_OtherCollider.gameObject.CompareTag("DrugBoyDoor"))
         {
@@ -53,10 +53,10 @@ public class DrugBoy : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D i_OtherCollider)
     {
-        HandleDoorExit(i_OtherCollider);
+        handleDoorExit(i_OtherCollider);
     }
     
-    private void HandleDoorExit(Collider2D i_OtherCollider)
+    private void handleDoorExit(Collider2D i_OtherCollider)
     {
         if (i_OtherCollider.gameObject.CompareTag("DrugBoyDoor"))
         {
