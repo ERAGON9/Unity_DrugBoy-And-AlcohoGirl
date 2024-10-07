@@ -18,7 +18,7 @@ namespace GameLogic
 
                 if (_instance == null)
                 {
-                    var singletonObject = new GameObject(typeof(T).Name);
+                    GameObject singletonObject = new GameObject(typeof(T).Name);
                     _instance = singletonObject.AddComponent<T>();
                 }
             

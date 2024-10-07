@@ -1,3 +1,4 @@
+using System;
 using CanvasManagers;
 using UnityEngine;
 
@@ -9,12 +10,35 @@ namespace GameLogic
         [SerializeField] private GameObject m_CanvasLevelFinishedObject;
         [SerializeField] private DrugBoy m_DrugBoy;
         [SerializeField] private AlcohoGirl m_AlcohoGirl;
-    
+        
+        public int MaxLevelScore { get; set; }
+        public Vector2 DrugBoyInitialPosition { get; set; }
+        public Vector2 AlcohoGirlInitialPosition { get; set; }
+        
         private int m_CurrentScore = 0;
         private bool m_IsLevelAlreadyFinish = false;
-        public int MaxLevelScore { get; set; }
-    
+        
+        private const string k_LevePlaylKey = "LevelToPlay";
 
+        private void Awake()
+        {
+            int levelNumberToPlay = PlayerPrefs.GetInt(k_LevePlaylKey, 0);
+            
+            if (levelNumberToPlay <= 0 ||
+                levelNumberToPlay > LevelsArray.Instance.LevelsCollection.Length) // Debugging purposes
+            {
+                Debug.LogError($"Level number: {levelNumberToPlay}, isn't legal level number!");
+            }
+
+            Instantiate(LevelsArray.Instance.LevelsCollection[--levelNumberToPlay], Vector3.zero, Quaternion.identity);
+        }
+        
+        private void Start()
+        {
+            MoveDrugBoyToInitialPosition();
+            MoveAlcohoGirlToInitialPosition();
+        }
+        
         public void AddPoints(int i_Points)
         {
             m_CurrentScore += i_Points;
@@ -75,6 +99,16 @@ namespace GameLogic
         {
             m_CanvasLevelFinishedObject.SetActive(true);
             CanvasLevelFinished.Instance.Initialize();
+        }
+        
+        public void MoveDrugBoyToInitialPosition()
+        {
+            m_DrugBoy.transform.position = DrugBoyInitialPosition;
+        }
+        
+        public void MoveAlcohoGirlToInitialPosition()
+        {
+            m_AlcohoGirl.transform.position = AlcohoGirlInitialPosition;
         }
     }
 }

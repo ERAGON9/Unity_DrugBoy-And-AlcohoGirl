@@ -16,13 +16,8 @@ namespace GameLogic
         {
             if (i_OtherCollision.gameObject.CompareTag("WaterPool") || i_OtherCollision.gameObject.CompareTag("DrugPool"))
             {
-                moveToInitialPosition();
+                GameManager.Instance.MoveAlcohoGirlToInitialPosition();
             }
-        }
-    
-        private void moveToInitialPosition()
-        {
-            transform.position = AlcohoGirlController.Instance.InitialPosition;
         }
     
         private void OnTriggerEnter2D(Collider2D i_OtherCollider)

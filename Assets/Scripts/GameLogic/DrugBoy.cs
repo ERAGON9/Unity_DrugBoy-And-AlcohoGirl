@@ -16,13 +16,8 @@ namespace GameLogic
         {
             if (i_OtherCollision.gameObject.CompareTag("WaterPool") || i_OtherCollision.gameObject.CompareTag("AlcoholPool"))
             {
-                moveToInitialPosition();
+                GameManager.Instance.MoveDrugBoyToInitialPosition();
             }
-        }
-    
-        private void moveToInitialPosition()
-        {
-            transform.position = DrugBoyController.Instance.InitialPosition;
         }
     
         private void OnTriggerEnter2D(Collider2D i_OtherCollider)

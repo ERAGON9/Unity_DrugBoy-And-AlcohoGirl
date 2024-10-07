@@ -27,8 +27,8 @@ namespace CanvasManagers
         public void Initialize()
         {
             //clearHighScoreData(); // For testing purposes
-            getHighScore();
-            setHighScoreUI(m_Score1, m_Score2, m_Score3);
+            getHighScores();
+            setHighScoresUI(m_Score1, m_Score2, m_Score3);
         }
 
         private void clearHighScoreData() // For testing purposes
@@ -38,14 +38,14 @@ namespace CanvasManagers
             PlayerPrefs.DeleteKey(k_Score3Key);
         }
 
-        private void getHighScore()
+        private void getHighScores()
         {
             m_Score1 = PlayerPrefs.GetString(k_Score1Key, k_DefaultScore);
             m_Score2 = PlayerPrefs.GetString(k_Score2Key, k_DefaultScore);
             m_Score3 = PlayerPrefs.GetString(k_Score3Key, k_DefaultScore);
         }
 
-        private void setHighScoreUI(string i_Score1, string i_Score2, string i_Score3)
+        private void setHighScoresUI(string i_Score1, string i_Score2, string i_Score3)
         {
             m_Score1Text.text = i_Score1;
             m_Score2Text.text = i_Score2;
@@ -88,11 +88,11 @@ namespace CanvasManagers
                 m_Score3 = i_CurrentTime;
             }
 
-            setHighScoreUI(m_Score1, m_Score2, m_Score3);
-            saveHighScore();
+            setHighScoresUI(m_Score1, m_Score2, m_Score3);
+            saveHighScores();
         }
 
-        private void saveHighScore()
+        private void saveHighScores()
         {
             PlayerPrefs.SetString(k_Score1Key, m_Score1);
             PlayerPrefs.SetString(k_Score2Key, m_Score2);

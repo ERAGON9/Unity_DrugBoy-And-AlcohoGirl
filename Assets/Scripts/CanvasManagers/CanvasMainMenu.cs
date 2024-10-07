@@ -5,8 +5,12 @@ namespace CanvasManagers
 {
     public class CanvasMainMenu : MonoBehaviour
     {
-        public void PlayGame()
+        private const string k_LevePlaylKey = "LevelToPlay";
+        
+        public void PlayLevel(int i_LevelNumber)
         {
+            PlayerPrefs.SetInt(k_LevePlaylKey, i_LevelNumber);
+            PlayerPrefs.Save();
             SceneManager.LoadScene("GameScene");
         }
     

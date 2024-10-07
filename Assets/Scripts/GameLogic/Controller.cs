@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GameLogic
 {
     public abstract class Controller : MonoBehaviour
     {
-        private enum Direction
+        private enum eDirection
         {
             Left,
             Right
@@ -15,7 +16,6 @@ namespace GameLogic
     
         [Header("Player Properties")]
         [SerializeField] private Rigidbody2D m_PlayerRigidbody2D;
-        [SerializeField] private Vector2 m_InitialPosition;
         [SerializeField] private float m_MovementSpeed;
         [SerializeField] private float m_MaxMovementSpeed;
         [SerializeField] private float m_JumpForce;
@@ -28,8 +28,7 @@ namespace GameLogic
     
         [Header("Jump Improvement")]
         [SerializeField] private float m_JumpBufferTime = 0.1f;
-    
-        public Vector2 InitialPosition => m_InitialPosition;
+        
         public bool CharacterPaused { get; set; } = false;
     
         // Input Controls - Inherits need to set these values.
@@ -45,7 +44,6 @@ namespace GameLogic
 
         protected virtual void Start()
         {
-            m_PlayerRigidbody2D.position = m_InitialPosition;
         }
     
         protected virtual void Update()
@@ -107,25 +105,25 @@ namespace GameLogic
         {
             if (m_PressLeft)
             {
-                move(Direction.Left);
+                move(eDirection.Left);
             }
             else if (m_PressRight)
             {
-                move(Direction.Right);
+                move(eDirection.Right);
             }
         }
     
-        private void move(Direction i_Direction)
+        private void move(eDirection i_Direction)
         {
             Vector2 velocity = m_PlayerRigidbody2D.velocity;
 
-            if (i_Direction == Direction.Left && velocity.x > 0 || i_Direction == Direction.Right && velocity.x < 0)
+            if (i_Direction == eDirection.Left && velocity.x > 0 || i_Direction == eDirection.Right && velocity.x < 0)
             {
                 velocity = switchVelocityDirection(velocity);
             }
 
             float DeltaX = m_MovementSpeed * Time.fixedDeltaTime;
-            if (i_Direction == Direction.Left)
+            if (i_Direction == eDirection.Left)
             {
                 DeltaX *= -1;
             }
@@ -133,7 +131,7 @@ namespace GameLogic
             velocity.x += DeltaX;
             velocity.x = Mathf.Clamp(velocity.x, -m_MaxMovementSpeed, m_MaxMovementSpeed); // Speed limit.
             m_PlayerRigidbody2D.velocity = velocity;
-            updateCharacterFaceDirection(i_Direction == Direction.Left ? k_FaceDirectionLeft : k_FaceDirectionRight);
+            updateCharacterFaceDirection(i_Direction == eDirection.Left ? k_FaceDirectionLeft : k_FaceDirectionRight);
         }
 
         private Vector2 switchVelocityDirection(Vector2 i_Velocity)
