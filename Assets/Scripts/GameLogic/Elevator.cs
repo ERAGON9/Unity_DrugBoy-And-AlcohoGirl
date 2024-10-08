@@ -2,49 +2,47 @@ using UnityEngine;
 
 namespace GameLogic
 {
-    public class Elevator : MonoBehaviour
+    public abstract class Elevator : MonoBehaviour
     {
         [Header("Elevator Settings")] 
         [SerializeField] private Rigidbody2D m_Rigidbody2D;
         [SerializeField] private float m_MovementSpeed; 
-        [SerializeField] private float m_MovementDistance;
-    
-        public int ButtonsPressed = 0;
+        [SerializeField] private float m_MaxPosition;
+        [SerializeField] private float m_MinPosition;
 
-        private Vector3 m_InitialPosition;
-        private Vector3 m_MaxedPosition;
-    
-        void Start()
-        {
-            m_InitialPosition = transform.position;
-            m_MaxedPosition = new Vector3(m_InitialPosition.x, m_InitialPosition.y + m_MovementDistance, m_InitialPosition.z);
-        }
+        public int ButtonsPressed { get; set; }
 
-        private void FixedUpdate()
-        {
-            moveUp();
-            moveDown();
-        }
+        protected abstract void Move();
 
-        private void moveUp()
+        protected void MoveUp()
         {
-            if (isActivated() && transform.position.y < m_MaxedPosition.y)
+            if (transform.position.y < m_MaxPosition)
             {
                 Vector2 newPosition = new Vector2(transform.position.x, transform.position.y + (m_MovementSpeed * Time.fixedDeltaTime));
+                if (newPosition.y > m_MaxPosition) // Small threshold to keep the max position
+                {
+                    newPosition.y = m_MaxPosition;
+                }
+                
                 m_Rigidbody2D.MovePosition(newPosition);
             }
         }
     
-        private void moveDown()
+        protected void MoveDown()
         {
-            if (!isActivated() && transform.position.y > m_InitialPosition.y)
+            if (transform.position.y > m_MinPosition)
             {
                 Vector2 newPosition = new Vector2(transform.position.x, transform.position.y - (m_MovementSpeed * Time.fixedDeltaTime));
+                if (newPosition.y < m_MinPosition) // Small threshold to keep the min position
+                {
+                    newPosition.y = m_MinPosition;
+                }
+                
                 m_Rigidbody2D.MovePosition(newPosition);
             }
         }
 
-        private bool isActivated()
+        protected bool IsActivated()
         {
             return ButtonsPressed > 0;
         }

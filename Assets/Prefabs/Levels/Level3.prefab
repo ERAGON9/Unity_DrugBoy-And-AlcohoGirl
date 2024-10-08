@@ -887,7 +887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ac69091826d824f817e66f9d0e9e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ConnectedElevator: {fileID: 7553299222333790675}
+  m_ConnectedElevator: {fileID: 5131291836399696525}
 --- !u!212 &3276591899441518994
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1127,12 +1127,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5430638011739669983}
-  - component: {fileID: 7553299222333790675}
+  - component: {fileID: 5131291836399696525}
   - component: {fileID: 146837007286669849}
   - component: {fileID: 1636843704224874921}
   - component: {fileID: 8698049904080768920}
   m_Layer: 9
-  m_Name: Elevator
+  m_Name: ElevatorUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1153,7 +1153,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2601978399327354374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7553299222333790675
+--- !u!114 &5131291836399696525
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1162,13 +1162,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3732453510216650264}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f55dbfc2f6cd54e91f0e297f98c818, type: 3}
+  m_Script: {fileID: 11500000, guid: af5c3d5f0df147978364244c78fa4c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Rigidbody2D: {fileID: 1636843704224874921}
   m_MovementSpeed: 1.5
-  m_MovementDistance: 2.5
-  ButtonsPressed: 0
+  m_MaxPosition: -1.5
+  m_MinPosition: -3.3
 --- !u!212 &146837007286669849
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2755,7 +2755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ac69091826d824f817e66f9d0e9e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ConnectedElevator: {fileID: 7553299222333790675}
+  m_ConnectedElevator: {fileID: 5131291836399696525}
 --- !u!212 &7559558893293791055
 SpriteRenderer:
   m_ObjectHideFlags: 0
