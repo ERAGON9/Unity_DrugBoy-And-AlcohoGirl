@@ -3316,9 +3316,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da12bf1819602546bcd53c2cd7c760b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_LevelNumber: 3
   m_DrugBoyInitialPosition: {x: -7, y: -3.98}
   m_AlcohoGirlInitialPosition: {x: -6, y: -3.98}
-  m_MaxScore: 60
+  m_MaximumScore: 60
 --- !u!1 &8031022334010751717
 GameObject:
   m_ObjectHideFlags: 0

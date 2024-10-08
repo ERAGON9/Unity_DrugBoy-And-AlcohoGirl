@@ -14,13 +14,18 @@ namespace CanvasManagers
         
         [Header("Levels Menu")]
         [SerializeField] private List<Button> m_LevelsButtons;
-
-
+        
+        
         private void Awake()
         {
             //clearHighestUnlockedLevel(); // For testing purposes
             int highestUnlockedLevel = PlayerPrefs.GetInt(k_HighestUnlockedLevelKey, 1);
             setInteractebaleButtons(highestUnlockedLevel);
+        }
+        
+        private void clearHighestUnlockedLevel() // For testing purposes
+        {
+            PlayerPrefs.DeleteKey(k_HighestUnlockedLevelKey);
         }
         
         private void setInteractebaleButtons(int i_HighestUnlockedLevel)
@@ -31,18 +36,13 @@ namespace CanvasManagers
             }
         }
         
-        private void clearHighestUnlockedLevel() // For testing purposes
-        {
-            PlayerPrefs.DeleteKey(k_HighestUnlockedLevelKey);
-        }
-        
         public void PlayLevel(int i_LevelNumber)
         {
             PlayerPrefs.SetInt(k_LevelPlaylKey, i_LevelNumber);
             PlayerPrefs.Save();
             SceneManager.LoadScene("GameScene");
         }
-    
+        
         public void QuitGame()
         {
             Debug.Log("Quit");

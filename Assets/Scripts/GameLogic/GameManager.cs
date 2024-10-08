@@ -17,7 +17,7 @@ namespace GameLogic
         
         private int m_CurrentScore = 0;
         private bool m_IsLevelAlreadyFinish = false;
-        
+        private LevelManager m_CurrentLevelManager;
 
         private void Awake()
         {
@@ -33,7 +33,8 @@ namespace GameLogic
                 Debug.LogError($"Level number: {levelNumberToPlay}, isn't legal level number!");
             }
 
-            Instantiate(LevelsArray.Instance.LevelsCollection[--levelNumberToPlay], Vector3.zero, Quaternion.identity);
+            GameObject currentLevel = Instantiate(LevelsManagement.Instance.LevelsCollection[--levelNumberToPlay], Vector3.zero, Quaternion.identity);
+            m_CurrentLevelManager = currentLevel.GetComponent<LevelManager>();
         }
 
         private void Start()
@@ -98,10 +99,10 @@ namespace GameLogic
             stopPlayersMovement();
             activateCanvasLevelFinished();
             string currentTime = CanvasDuringGame.Instance.CurrentTimeText.text;
-            CanvasLevelFinished.Instance.UpdateHighScore(currentTime);
+            updateLevelHighScore(currentTime);
             updateHighestUnlockedLevel();
         }
-
+        
         private void stopPlayersMovement()
         {
             DrugBoyController.Instance.CharacterPaused = true;
@@ -111,7 +112,22 @@ namespace GameLogic
         private void activateCanvasLevelFinished()
         {
             m_CanvasLevelFinishedObject.SetActive(true);
-            CanvasLevelFinished.Instance.Initialize();
+            CanvasLevelFinished.Instance.SetHighScoresUI(m_CurrentLevelManager.HighScore1,
+                m_CurrentLevelManager.HighScore2, m_CurrentLevelManager.HighScore3);
+        }
+        
+        private void updateLevelHighScore(string i_CurrentTime)
+        {
+            if (m_CurrentLevelManager.IsNewHighScore(i_CurrentTime))
+            {
+                m_CurrentLevelManager.UpdateHighScore(i_CurrentTime);
+                CanvasLevelFinished.Instance.NewHighScoreUI(m_CurrentLevelManager.HighScore1,
+                    m_CurrentLevelManager.HighScore2, m_CurrentLevelManager.HighScore3);
+            }
+            else
+            {
+                CanvasLevelFinished.Instance.NotSpeedEnoughUI();
+            }
         }
         
         private void updateHighestUnlockedLevel()

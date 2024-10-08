@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 285590914}
   - component: {fileID: 285590913}
   m_Layer: 0
-  m_Name: Score1 (TMP)
+  m_Name: TextScore1 (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -626,7 +626,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: XX:XX
+  m_text: <MM:SS>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -1110,7 +1110,7 @@ GameObject:
   - component: {fileID: 869057596}
   - component: {fileID: 869057595}
   m_Layer: 5
-  m_Name: Text Header (TMP)
+  m_Name: TextHeader (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1188,7 +1188,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 5
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1312,7 +1312,7 @@ GameObject:
   - component: {fileID: 987107591}
   - component: {fileID: 987107590}
   m_Layer: 5
-  m_Name: Timer Banner
+  m_Name: TimerBanner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1388,7 +1388,7 @@ GameObject:
   - component: {fileID: 1022684018}
   - component: {fileID: 1022684017}
   m_Layer: 5
-  m_Name: Logo Text (TMP)
+  m_Name: TextLogo (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1643,7 +1643,7 @@ GameObject:
   - component: {fileID: 1200061673}
   - component: {fileID: 1200061672}
   m_Layer: 5
-  m_Name: LootInfoMsg (TMP)
+  m_Name: TextLootInfoMsg (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1842,7 +1842,7 @@ GameObject:
   - component: {fileID: 1239587798}
   - component: {fileID: 1239587797}
   m_Layer: 0
-  m_Name: Place1 (TMP)
+  m_Name: TextPlace1 (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1987,7 +1987,7 @@ GameObject:
   - component: {fileID: 1328786856}
   - component: {fileID: 1328786855}
   m_Layer: 5
-  m_Name: Time (TMP)
+  m_Name: TextTime (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2262,7 +2262,7 @@ GameObject:
   - component: {fileID: 1549831170}
   - component: {fileID: 1549831169}
   m_Layer: 0
-  m_Name: Place3 (TMP)
+  m_Name: TextPlace3 (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2396,7 +2396,7 @@ GameObject:
   - component: {fileID: 1586526192}
   - component: {fileID: 1586526191}
   m_Layer: 0
-  m_Name: Place2 (TMP)
+  m_Name: TextPlace2 (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2577,7 +2577,7 @@ GameObject:
   - component: {fileID: 1618067555}
   - component: {fileID: 1618067554}
   m_Layer: 0
-  m_Name: Score2 (TMP)
+  m_Name: TextScore2 (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2622,7 +2622,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: XX:XX
+  m_text: <MM:SS>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -2711,7 +2711,7 @@ GameObject:
   - component: {fileID: 1629078720}
   - component: {fileID: 1629078719}
   m_Layer: 5
-  m_Name: Score (TMP)
+  m_Name: TextScore (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2899,7 +2899,7 @@ GameObject:
   - component: {fileID: 1718903949}
   - component: {fileID: 1718903948}
   m_Layer: 0
-  m_Name: LevelsArray
+  m_Name: LevelsManagement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2948,7 +2948,7 @@ GameObject:
   - component: {fileID: 1810852538}
   - component: {fileID: 1810852537}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: PanelBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3025,7 +3025,7 @@ GameObject:
   - component: {fileID: 1887959974}
   - component: {fileID: 1887959973}
   m_Layer: 0
-  m_Name: Score3 (TMP)
+  m_Name: TextScore3 (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3070,7 +3070,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: XX:XX
+  m_text: <MM:SS>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -3160,7 +3160,7 @@ GameObject:
   - component: {fileID: 1899381805}
   - component: {fileID: 1899381804}
   m_Layer: 5
-  m_Name: GoToMainMenuButton
+  m_Name: ButtonToMainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
