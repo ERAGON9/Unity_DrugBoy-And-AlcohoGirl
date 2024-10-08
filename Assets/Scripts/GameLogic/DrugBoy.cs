@@ -4,6 +4,10 @@ namespace GameLogic
 {
     public class DrugBoy : MonoBehaviour
     {
+        [Header("Audio")] 
+        [SerializeField] private AudioSource m_AudioSource;
+        [SerializeField] private AudioClip m_LootClip;
+        
         public bool IsFinished { get; private set; } = false;
     
     
@@ -30,6 +34,7 @@ namespace GameLogic
         {
             if (i_OtherCollider.gameObject.CompareTag("WeedBottle") && !i_OtherCollider.gameObject.GetComponent<Loot>().IsCollected)
             {
+                m_AudioSource.PlayOneShot(m_LootClip);
                 i_OtherCollider.gameObject.GetComponent<Loot>().IsCollected = true;
                 GameManager.Instance.AddPoints(10);
                 Destroy(i_OtherCollider.gameObject);

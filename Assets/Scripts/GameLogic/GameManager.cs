@@ -11,6 +11,11 @@ namespace GameLogic
         [SerializeField] private DrugBoy m_DrugBoy;
         [SerializeField] private AlcohoGirl m_AlcohoGirl;
         
+        [Header("Audio")] 
+        [SerializeField] private AudioSource m_AudioSource;
+        [SerializeField] private AudioClip m_BackgroundClip;
+        [SerializeField] private AudioClip m_TadaClip;
+        
         public int MaxLevelScore { get; set; }
         public Vector2 DrugBoyInitialPosition { get; set; }
         public Vector2 AlcohoGirlInitialPosition { get; set; }
@@ -41,6 +46,7 @@ namespace GameLogic
         {
             MoveDrugBoyToInitialPosition();
             MoveAlcohoGirlToInitialPosition();
+            playBackgroundMusic();
         }
         
         public void MoveDrugBoyToInitialPosition()
@@ -51,6 +57,13 @@ namespace GameLogic
         public void MoveAlcohoGirlToInitialPosition()
         {
             m_AlcohoGirl.transform.position = AlcohoGirlInitialPosition;
+        }
+        
+        private void playBackgroundMusic()
+        {
+            m_AudioSource.clip = m_BackgroundClip;
+            m_AudioSource.loop = true;
+            m_AudioSource.Play();
         }
         
         public void AddPoints(int i_Points)
@@ -97,18 +110,25 @@ namespace GameLogic
         {
             CanvasDuringGame.Instance.RunTimer = false;
             stopPlayersMovement();
+            finishedMusic();
             activateCanvasLevelFinished();
             string currentTime = CanvasDuringGame.Instance.CurrentTimeText.text;
             updateLevelHighScore(currentTime);
             updateHighestUnlockedLevel();
         }
-        
+
         private void stopPlayersMovement()
         {
             DrugBoyController.Instance.CharacterPaused = true;
             AlcohoGirlController.Instance.CharacterPaused = true;
         }
-
+        
+        private void finishedMusic()
+        {
+            m_AudioSource.Stop();
+            m_AudioSource.PlayOneShot(m_TadaClip);
+        }
+        
         private void activateCanvasLevelFinished()
         {
             m_CanvasLevelFinishedObject.SetActive(true);
