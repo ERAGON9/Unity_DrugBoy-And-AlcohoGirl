@@ -18,31 +18,43 @@ namespace GameLogic
         private int m_CurrentScore = 0;
         private bool m_IsLevelAlreadyFinish = false;
         
-        private const string k_LevePlaylKey = "LevelToPlay";
 
         private void Awake()
         {
-            int levelNumberToPlay = PlayerPrefs.GetInt(k_LevePlaylKey, 0);
+            instantiateLevel();
+        }
+
+        private void instantiateLevel()
+        {
+            int levelNumberToPlay = PlayerPrefs.GetInt(CanvasMainMenu.k_LevelPlaylKey);
             
-            if (levelNumberToPlay <= 0 ||
-                levelNumberToPlay > LevelsArray.Instance.LevelsCollection.Length) // Debugging purposes
+            if (levelNumberToPlay < 1 || levelNumberToPlay > CanvasMainMenu.k_HighestAvailableLevel) // Debugging purposes
             {
                 Debug.LogError($"Level number: {levelNumberToPlay}, isn't legal level number!");
             }
 
             Instantiate(LevelsArray.Instance.LevelsCollection[--levelNumberToPlay], Vector3.zero, Quaternion.identity);
         }
-        
+
         private void Start()
         {
             MoveDrugBoyToInitialPosition();
             MoveAlcohoGirlToInitialPosition();
         }
         
+        public void MoveDrugBoyToInitialPosition()
+        {
+            m_DrugBoy.transform.position = DrugBoyInitialPosition;
+        }
+        
+        public void MoveAlcohoGirlToInitialPosition()
+        {
+            m_AlcohoGirl.transform.position = AlcohoGirlInitialPosition;
+        }
+        
         public void AddPoints(int i_Points)
         {
             m_CurrentScore += i_Points;
-            Debug.Log("Score: " + m_CurrentScore.ToString()); // Added for debugging purposes
             updateScoreUI();
         }
 
@@ -87,6 +99,7 @@ namespace GameLogic
             activateCanvasLevelFinished();
             string currentTime = CanvasDuringGame.Instance.CurrentTimeText.text;
             CanvasLevelFinished.Instance.UpdateHighScore(currentTime);
+            updateHighestUnlockedLevel();
         }
 
         private void stopPlayersMovement()
@@ -101,14 +114,16 @@ namespace GameLogic
             CanvasLevelFinished.Instance.Initialize();
         }
         
-        public void MoveDrugBoyToInitialPosition()
+        private void updateHighestUnlockedLevel()
         {
-            m_DrugBoy.transform.position = DrugBoyInitialPosition;
-        }
-        
-        public void MoveAlcohoGirlToInitialPosition()
-        {
-            m_AlcohoGirl.transform.position = AlcohoGirlInitialPosition;
+            int currentLevel = PlayerPrefs.GetInt(CanvasMainMenu.k_LevelPlaylKey);
+            int highestUnlockedLevel = PlayerPrefs.GetInt(CanvasMainMenu.k_HighestUnlockedLevelKey, 1);
+            
+            if (currentLevel == highestUnlockedLevel && currentLevel < CanvasMainMenu.k_HighestAvailableLevel)
+            {
+                PlayerPrefs.SetInt(CanvasMainMenu.k_HighestUnlockedLevelKey, ++highestUnlockedLevel);
+                PlayerPrefs.Save();
+            }
         }
     }
 }

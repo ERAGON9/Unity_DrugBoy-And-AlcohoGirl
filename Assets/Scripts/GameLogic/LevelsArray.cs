@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace GameLogic
@@ -5,6 +6,6 @@ namespace GameLogic
     public class LevelsArray : Singleton<LevelsArray>
     {
         [Header("Levels Collection")]
-        public GameObject[] LevelsCollection;
+        public List<GameObject> LevelsCollection;
     }
 }

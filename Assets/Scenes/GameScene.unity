@@ -2919,6 +2919,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelsCollection:
   - {fileID: 7887617379871453084, guid: f52b39d9bfef27845b8ff2ac64c7b11d, type: 3}
+  - {fileID: 7887617379871453084, guid: 81a47d1cd7b3cc548b1633792a36f5cf, type: 3}
+  - {fileID: 7887617379871453084, guid: dee098c7155517247876b90820db2465, type: 3}
 --- !u!4 &1718903949
 Transform:
   m_ObjectHideFlags: 0
