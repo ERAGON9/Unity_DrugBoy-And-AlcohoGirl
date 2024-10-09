@@ -6,8 +6,8 @@ namespace GameLogic
     {
         [Header("Level Settings")] 
         [SerializeField] private int m_LevelNumber;
-        [SerializeField] private Vector2 m_DrugBoyInitialPosition;
-        [SerializeField] private Vector2 m_AlcohoGirlInitialPosition;
+        [SerializeField] private DrugBoySpawnLocation m_DrugBoySpawnLocation;
+        [SerializeField] private AlcohoGirlSpawnLocation m_AlcohoGirlSpawnLocation;
         [SerializeField] private int m_MaximumScore;
 
         public string HighScore1 { get; private set; }
@@ -30,8 +30,8 @@ namespace GameLogic
 
         private void updatePlayersInitialPosition()
         {
-            GameManager.Instance.DrugBoyInitialPosition = m_DrugBoyInitialPosition;
-            GameManager.Instance.AlcohoGirlInitialPosition = m_AlcohoGirlInitialPosition;
+            GameManager.Instance.DrugBoyInitialPosition = m_DrugBoySpawnLocation.transform.position;
+            GameManager.Instance.AlcohoGirlInitialPosition = m_AlcohoGirlSpawnLocation.transform.position;
         }
 
         private void updateMaxScoreForLevel()

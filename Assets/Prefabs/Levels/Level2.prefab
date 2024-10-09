@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 6989198030065595485}
   - component: {fileID: 4442488306439015216}
   m_Layer: 9
-  m_Name: GroundFloor1.5Left
+  m_Name: GroundFloorLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,7 +161,7 @@ Transform:
   m_LocalScale: {x: 0.32942998, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2601978399327354374}
+  m_Father: {fileID: 2726783934976367953}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6989198030065595485
 SpriteRenderer:
@@ -412,6 +412,40 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 0.56}
   m_EdgeRadius: 0
+--- !u!1 &388417596122435161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2726783934976367953}
+  m_Layer: 0
+  m_Name: AlcoholPoolFloor1.5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2726783934976367953
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388417596122435161}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4395213192407489388}
+  - {fileID: 1149905599257509973}
+  - {fileID: 6604596730144326585}
+  m_Father: {fileID: 2601978399327354374}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &396337776752592470
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,6 +731,50 @@ CapsuleCollider2D:
   m_Offset: {x: 0.0021, y: -0.0032184}
   m_Size: {x: 0.392, y: 0.5053}
   m_Direction: 0
+--- !u!1 &678252658273408956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1928901153310266483}
+  - component: {fileID: 6147999869950024815}
+  m_Layer: 0
+  m_Name: DrugBoySpawnLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1928901153310266483
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678252658273408956}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.5, y: -3.98, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2601978399327354374}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6147999869950024815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678252658273408956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f74c84a5f495f439dcf371b16cdbb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &813110747298138726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,6 +1450,139 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &2204167833041395872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5314921172535206053}
+  - component: {fileID: 4224426382691244541}
+  - component: {fileID: 1919705620636097838}
+  - component: {fileID: 8945692337808327616}
+  m_Layer: 18
+  m_Name: AlcoholBottleFloor1 (1)
+  m_TagString: AlcoholBottle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5314921172535206053
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204167833041395872}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7, y: -4.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2601978399327354374}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4224426382691244541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204167833041395872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe10127257e962c46949403375ab1a4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!212 &1919705620636097838
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204167833041395872}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: c6048eac049155f49a4110d6f7a419e0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 5.12, y: 5.12}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!70 &8945692337808327616
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204167833041395872}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0021, y: -0.0032184}
+  m_Size: {x: 0.392, y: 0.5053}
+  m_Direction: 0
 --- !u!1 &2895385854218158310
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,7 +1739,7 @@ GameObject:
   - component: {fileID: 6697533084915374}
   - component: {fileID: 8182313065089069936}
   m_Layer: 9
-  m_Name: GroundFloor1.5Right (1)
+  m_Name: GroundFloorRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1547,7 +1758,7 @@ Transform:
   m_LocalScale: {x: 0.3, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2601978399327354374}
+  m_Father: {fileID: 6249006708173394770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6697533084915374
 SpriteRenderer:
@@ -1779,6 +1990,40 @@ CapsuleCollider2D:
   m_Offset: {x: 0.0021, y: -0.0032184}
   m_Size: {x: 0.392, y: 0.5053}
   m_Direction: 0
+--- !u!1 &3494984092324670917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3123267523272136381}
+  m_Layer: 0
+  m_Name: GroundStaircase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3123267523272136381
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3494984092324670917}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4754551905550258087}
+  - {fileID: 1149241409517622098}
+  - {fileID: 8787853321644428570}
+  m_Father: {fileID: 2601978399327354374}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3654206569875768698
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,7 +2036,7 @@ GameObject:
   - component: {fileID: 1650649589586259324}
   - component: {fileID: 1546659455614174756}
   m_Layer: 9
-  m_Name: GroundFloor1.5Left (1)
+  m_Name: GroundFloorLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1810,7 +2055,7 @@ Transform:
   m_LocalScale: {x: 0.32942998, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2601978399327354374}
+  m_Father: {fileID: 6249006708173394770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1650649589586259324
 SpriteRenderer:
@@ -2379,7 +2624,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8351207658546256800}
   m_Layer: 0
-  m_Name: DrugPoolFloor1.5
+  m_Name: DrugPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2393,14 +2638,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4941940965138292220}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.887, y: 1.499, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3242776656334913771}
   - {fileID: 1789944265497744579}
-  m_Father: {fileID: 2601978399327354374}
+  m_Father: {fileID: 6249006708173394770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4986509940313328756
 GameObject:
@@ -2545,7 +2790,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1149905599257509973}
   m_Layer: 0
-  m_Name: AlcoholPoolFloor1.5
+  m_Name: AlcoholPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2559,14 +2804,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5023882332563345513}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.12, y: 1.499, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3928398506137239437}
   - {fileID: 5290381776103256767}
-  m_Father: {fileID: 2601978399327354374}
+  m_Father: {fileID: 2726783934976367953}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5055495426557878184
 GameObject:
@@ -3007,8 +3252,8 @@ Transform:
   m_GameObject: {fileID: 5140304299587121435}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: -1.5, z: 0}
-  m_LocalScale: {x: 13, y: 0.5, z: 1}
+  m_LocalPosition: {x: -1.2529, y: -1.5, z: 0}
+  m_LocalScale: {x: 12.493887, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2601978399327354374}
@@ -3240,6 +3485,139 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &5481089186863926681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 288950868012354220}
+  - component: {fileID: 6692069458995753264}
+  - component: {fileID: 1388822561071727020}
+  - component: {fileID: 8380337666853304381}
+  m_Layer: 19
+  m_Name: WeedBottleFloor2
+  m_TagString: WeedBottle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &288950868012354220
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5481089186863926681}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.23, y: 1.35, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2601978399327354374}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6692069458995753264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5481089186863926681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe10127257e962c46949403375ab1a4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!212 &1388822561071727020
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5481089186863926681}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 91951a41c56b13b45a3e013272819d49, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 5.12, y: 5.12}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!70 &8380337666853304381
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5481089186863926681}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0021, y: -0.0032184}
+  m_Size: {x: 0.392, y: 0.5053}
+  m_Direction: 0
 --- !u!1 &5496160470346349233
 GameObject:
   m_ObjectHideFlags: 0
@@ -3403,6 +3781,40 @@ Transform:
   - {fileID: 7227861874072342332}
   m_Father: {fileID: 2601978399327354374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5880710567538437181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6249006708173394770}
+  m_Layer: 0
+  m_Name: DrugPoolFloor1.5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6249006708173394770
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5880710567538437181}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8619953237641027598}
+  - {fileID: 8351207658546256800}
+  - {fileID: 950693863897001317}
+  m_Father: {fileID: 2601978399327354374}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5886914232342883175
 GameObject:
   m_ObjectHideFlags: 0
@@ -3545,7 +3957,7 @@ GameObject:
   - component: {fileID: 9209766324476292283}
   - component: {fileID: 2471942101362339878}
   m_Layer: 9
-  m_Name: GroundFloor2 (2)
+  m_Name: GroundStair2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3564,7 +3976,7 @@ Transform:
   m_LocalScale: {x: 0.75, y: 1.45, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2601978399327354374}
+  m_Father: {fileID: 3123267523272136381}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9209766324476292283
 SpriteRenderer:
@@ -3948,6 +4360,50 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 0.56}
   m_EdgeRadius: 0
+--- !u!1 &6581854877091229942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4435028430021109409}
+  - component: {fileID: 2021013894625878106}
+  m_Layer: 0
+  m_Name: AlcohoGirlSpawnLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4435028430021109409
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6581854877091229942}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.5, y: -3.98, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2601978399327354374}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2021013894625878106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6581854877091229942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9867a42965a057d4c8ce4597d9d3715c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6846663792266480701
 GameObject:
   m_ObjectHideFlags: 0
@@ -4681,18 +5137,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1928901153310266483}
+  - {fileID: 4435028430021109409}
   - {fileID: 8669190830088266410}
-  - {fileID: 4395213192407489388}
-  - {fileID: 1149905599257509973}
-  - {fileID: 6604596730144326585}
-  - {fileID: 8619953237641027598}
-  - {fileID: 8351207658546256800}
-  - {fileID: 950693863897001317}
+  - {fileID: 2726783934976367953}
+  - {fileID: 6249006708173394770}
   - {fileID: 6860697357556896063}
   - {fileID: 4649375929796385073}
-  - {fileID: 4754551905550258087}
-  - {fileID: 1149241409517622098}
-  - {fileID: 8787853321644428570}
+  - {fileID: 3123267523272136381}
   - {fileID: 4038944256860860583}
   - {fileID: 7667997412843505472}
   - {fileID: 265386536925994482}
@@ -4705,11 +5157,13 @@ Transform:
   - {fileID: 1358499979672673982}
   - {fileID: 5430638011739669983}
   - {fileID: 3235985487635080330}
+  - {fileID: 5314921172535206053}
   - {fileID: 1122049942797538096}
-  - {fileID: 537966513441598736}
   - {fileID: 7575107332065742894}
+  - {fileID: 537966513441598736}
   - {fileID: 3307138572168768444}
   - {fileID: 2928220517825193676}
+  - {fileID: 288950868012354220}
   - {fileID: 328095328200193138}
   - {fileID: 3171763964453277707}
   - {fileID: 27658412526985961}
@@ -4729,9 +5183,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_LevelNumber: 2
-  m_DrugBoyInitialPosition: {x: -5.5, y: -3.98}
-  m_AlcohoGirlInitialPosition: {x: -4.5, y: -3.98}
-  m_MaximumScore: 80
+  m_DrugBoySpawnLocation: {fileID: 6147999869950024815}
+  m_AlcohoGirlSpawnLocation: {fileID: 2021013894625878106}
+  m_MaximumScore: 100
 --- !u!1 &8031022334010751717
 GameObject:
   m_ObjectHideFlags: 0
@@ -5038,7 +5492,7 @@ GameObject:
   - component: {fileID: 7017274430675416399}
   - component: {fileID: 4552628836662515628}
   m_Layer: 9
-  m_Name: GroundFloor2 (3)
+  m_Name: GroundStair2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5057,7 +5511,7 @@ Transform:
   m_LocalScale: {x: 0.64245, y: 2.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2601978399327354374}
+  m_Father: {fileID: 3123267523272136381}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7017274430675416399
 SpriteRenderer:
@@ -5168,7 +5622,7 @@ GameObject:
   - component: {fileID: 8244658159040432278}
   - component: {fileID: 8862579167866820705}
   m_Layer: 9
-  m_Name: GroundFloor1.5Right
+  m_Name: GroundFloorRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5187,7 +5641,7 @@ Transform:
   m_LocalScale: {x: 0.3, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2601978399327354374}
+  m_Father: {fileID: 2726783934976367953}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8244658159040432278
 SpriteRenderer:
@@ -5298,7 +5752,7 @@ GameObject:
   - component: {fileID: 859331875673876809}
   - component: {fileID: 2643072109693886673}
   m_Layer: 9
-  m_Name: GroundFloor2 (1)
+  m_Name: GroundStair1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5317,7 +5771,7 @@ Transform:
   m_LocalScale: {x: 0.73207504, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2601978399327354374}
+  m_Father: {fileID: 3123267523272136381}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &859331875673876809
 SpriteRenderer:
