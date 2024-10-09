@@ -2652,7 +2652,7 @@ MonoBehaviour:
   m_AlcohoGirl: {fileID: 164564773}
   m_AudioSource: {fileID: 1616052358}
   m_BackgroundClip: {fileID: 8300000, guid: eab0b24e5f808f1409c8387f84660f6b, type: 3}
-  m_TadaClip: {fileID: 8300000, guid: 4db21f24cfe138d44a30595306e7f670, type: 3}
+  m_FinishClip: {fileID: 8300000, guid: 4db21f24cfe138d44a30595306e7f670, type: 3}
 --- !u!4 &1616052357
 Transform:
   m_ObjectHideFlags: 0

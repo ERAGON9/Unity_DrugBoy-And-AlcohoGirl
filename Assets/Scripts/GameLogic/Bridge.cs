@@ -13,19 +13,22 @@ namespace GameLogic
     
         private void FixedUpdate()
         {
-            rotate();
+            if (IsActivated)
+            {
+                rotate();
+            }
         }
 
         private void rotate()
         {
-            if (IsActivated && m_Rigidbody2D.rotation > 0)
+            if (m_Rigidbody2D.rotation > 0)
             {
                 float newRotation = m_Rigidbody2D.rotation - (m_RotateSpeed * Time.fixedDeltaTime);
                 if (newRotation < 0.1f) // Small threshold to reset the rotation to 0
                 {
                     newRotation = 0;
                 }
-            
+                
                 m_Rigidbody2D.MoveRotation(newRotation);
             }
         }

@@ -1,5 +1,6 @@
 using CanvasManagers;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GameLogic
 {
@@ -13,7 +14,7 @@ namespace GameLogic
         [Header("Audio")] 
         [SerializeField] private AudioSource m_AudioSource;
         [SerializeField] private AudioClip m_BackgroundClip;
-        [SerializeField] private AudioClip m_TadaClip;
+        [SerializeField] private AudioClip m_FinishClip;
         
         public int MaxLevelScore { get; set; }
         public Vector2 DrugBoyInitialPosition { get; set; }
@@ -125,7 +126,7 @@ namespace GameLogic
         private void finishedMusic()
         {
             m_AudioSource.Stop();
-            m_AudioSource.PlayOneShot(m_TadaClip);
+            m_AudioSource.PlayOneShot(m_FinishClip);
         }
         
         private void activateCanvasLevelFinished()
